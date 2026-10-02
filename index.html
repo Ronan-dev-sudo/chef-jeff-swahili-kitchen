@@ -4,841 +4,354 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Chef Jeff’s Swahili Kitchen</title>
+<title>Chef Jeff's Swahili Kitchen</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
 html,body{
   width:100%;
   height:100%;
   overflow:hidden;
-  background:#252525;
-  color:#f1eee8;
 }
 
 body{
+  background:#202322;
+  color:#f1eee7;
   font-family:"DM Sans",sans-serif;
-  font-weight:300;
 }
 
-/* =========================
-   OPENING
-========================= */
+/* BACKGROUND */
 
-.opening{
-  position:absolute;
+.kitchen{
+  position:fixed;
   inset:0;
-  background:#252525;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  z-index:10;
-  transition:opacity 1.5s ease, transform 2s ease;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(255,220,150,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #292b29 0%,
+      #202322 45%,
+      #171817 100%
+    );
 }
 
-.opening.hide{
-  opacity:0;
-  transform:scale(1.04);
-  pointer-events:none;
-}
-
-.light{
+.kitchen::before{
+  content:"";
   position:absolute;
   width:70vw;
   height:70vw;
-  max-width:800px;
-  max-height:800px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(218,198,157,.18),
-    rgba(218,198,157,.08) 35%,
-    transparent 70%
-  );
-  filter:blur(25px);
-  animation:breath 7s ease-in-out infinite;
+  right:-25vw;
+  top:-30vw;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255,225,170,.13),
+      transparent 65%
+    );
+  filter:blur(20px);
+  animation:sunlight 12s ease-in-out infinite alternate;
 }
 
-.content{
-  position:relative;
-  z-index:2;
-}
-
-.eyebrow{
-  font-size:.7rem;
-  letter-spacing:.35em;
-  color:#aaa69e;
-  margin-bottom:22px;
-}
-
-h1{
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(4rem,10vw,8rem);
-  font-weight:300;
-  line-height:.85;
-}
-
-.subtitle{
-  margin-top:25px;
-  font-size:.7rem;
-  letter-spacing:.3em;
-  color:#aaa69e;
-}
-
-.enter{
-  margin-top:55px;
-  border:1px solid rgba(241,238,232,.3);
-  background:transparent;
-  color:#f1eee8;
-  padding:13px 28px;
-  font-family:"DM Sans",sans-serif;
-  font-size:.65rem;
-  letter-spacing:.25em;
-  cursor:pointer;
-  transition:.4s ease;
-}
-
-.enter:hover{
-  background:#f1eee8;
-  color:#252525;
-}
-
-.footer{
+.kitchen::after{
+  content:"";
   position:absolute;
-  bottom:25px;
-  left:0;
-  width:100%;
-  text-align:center;
-  font-size:.55rem;
-  letter-spacing:.25em;
-  color:#77746f;
+  inset:-20%;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(255,255,255,.025) 45%,
+      transparent 55%
+    );
+  animation:lightmove 16s linear infinite;
 }
 
-/* =========================
-   SCENES
-========================= */
+@keyframes sunlight{
+  from{
+    transform:translate(0,0) scale(1);
+  }
+  to{
+    transform:translate(-8vw,6vh) scale(1.15);
+  }
+}
+
+@keyframes lightmove{
+  from{
+    transform:translateX(-15%);
+  }
+  to{
+    transform:translateX(15%);
+  }
+}
+
+/* PALM SHADOW */
+
+.palm-shadow{
+  position:absolute;
+  right:-5%;
+  bottom:-10%;
+  width:45%;
+  height:80%;
+  opacity:.08;
+  transform:rotate(-12deg);
+}
+
+.palm-shadow::before,
+.palm-shadow::after{
+  content:"";
+  position:absolute;
+  background:#111;
+  border-radius:100%;
+}
+
+.palm-shadow::before{
+  width:12px;
+  height:90%;
+  left:48%;
+  top:10%;
+  transform:rotate(12deg);
+}
+
+.palm-shadow::after{
+  width:80%;
+  height:18%;
+  left:10%;
+  top:5%;
+  transform:rotate(-15deg);
+  box-shadow:
+    30px 20px 0 #111,
+    -30px 25px 0 #111,
+    60px 40px 0 #111,
+    -60px 45px 0 #111;
+}
+
+/* SCENE SYSTEM */
 
 .scene{
-  position:absolute;
+  position:fixed;
   inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   opacity:0;
   visibility:hidden;
   pointer-events:none;
-  transition:opacity 1.6s ease;
+
+  transition:
+    opacity 1.4s ease,
+    visibility 0s linear 1.4s;
+
+  z-index:1;
 }
 
 .scene.active{
   opacity:1;
   visibility:visible;
   pointer-events:auto;
+
+  transition:
+    opacity 1.4s ease,
+    visibility 0s linear 0s;
+
+  z-index:10;
 }
 
-.scene-content{
-  position:absolute;
-  z-index:3;
-  left:10%;
-  top:50%;
-  transform:translateY(-50%);
-}
+/* CONTENT */
 
-.chapter{
-  font-size:.6rem;
-  letter-spacing:.35em;
-  color:#aaa69e;
-  margin-bottom:20px;
-}
-
-.scene-title{
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(4rem,8vw,7rem);
-  font-weight:300;
-  line-height:.9;
-}
-
-.scene-text{
-  max-width:420px;
-  margin-top:28px;
-  font-size:.9rem;
-  line-height:1.8;
-  color:#bbb8b1;
-}
-
-/* =========================
-   WHERE I COOK
-========================= */
-
-.scene-two{
-  background:#292a28;
-}
-
-.sun{
-  position:absolute;
-  width:700px;
-  height:700px;
-  border-radius:50%;
-  right:-250px;
-  top:-250px;
-  background:radial-gradient(
-    circle,
-    rgba(220,195,145,.2),
-    transparent 68%
-  );
-  filter:blur(30px);
-}
-
-.scene-palm{
-  position:absolute;
-  inset:0;
-  opacity:.08;
-  background:
-    linear-gradient(120deg,transparent 45%,#111 46%,transparent 47%),
-    linear-gradient(145deg,transparent 48%,#111 49%,transparent 50%);
-  animation:palmMove 12s ease-in-out infinite alternate;
-}
-
-.surface{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:22%;
-  background:#222321;
-}
-
-/* =========================
-   FOOD
-========================= */
-
-.food-scene{
-  background:#282927;
-}
-
-.food-light{
-  position:absolute;
-  width:900px;
-  height:900px;
-  left:-300px;
-  top:-300px;
-  background:radial-gradient(
-    circle,
-    rgba(217,194,151,.15),
-    transparent 68%
-  );
-  filter:blur(35px);
-}
-
-.food-content{
-  position:absolute;
-  left:10%;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.food-list{
-  margin-top:38px;
-  display:grid;
-  gap:15px;
-}
-
-.food-list span{
-  font-family:"Cormorant Garamond",serif;
-  font-size:1.7rem;
-  color:#c8c4bb;
-}
-
-/* =========================
-   RICE
-========================= */
-
-.rice-scene{
-  background:#262725;
-}
-
-.rice-glow{
-  position:absolute;
-  width:650px;
-  height:650px;
-  right:-200px;
-  top:50%;
-  transform:translateY(-50%);
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(226,204,163,.16),
-    transparent 68%
-  );
-  filter:blur(30px);
-}
-
-.rice-palm{
-  position:absolute;
-  right:-80px;
-  top:-100px;
-  width:500px;
-  height:800px;
-  opacity:.1;
-  transform:rotate(12deg);
-  background:
-    linear-gradient(80deg,transparent 48%,#111 49%,transparent 51%);
-}
-
-.rice-content{
-  position:absolute;
-  left:10%;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.rice-list{
-  margin-top:38px;
-  display:grid;
-  gap:12px;
-}
-
-.rice-list div{
-  font-family:"Cormorant Garamond",serif;
-  font-size:1.55rem;
-  color:#c4c0b8;
-}
-
-/* =========================
-   QUICK KITCHEN
-========================= */
-
-.quick-scene{
-  background:#292a28;
-}
-
-.quick-glow{
-  position:absolute;
-  width:600px;
-  height:600px;
-  left:-200px;
-  bottom:-200px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(214,192,151,.13),
-    transparent 70%
-  );
-  filter:blur(25px);
-}
-
-.quick-content{
-  position:absolute;
-  left:10%;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.quick-list{
-  margin-top:35px;
-  display:grid;
-  gap:15px;
-}
-
-.quick-list div{
-  font-family:"Cormorant Garamond",serif;
-  font-size:1.6rem;
-  color:#c5c1b9;
-}
-
-.quick-floor{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:15%;
-  background:#222321;
-}
-
-/* =========================
-   CUP
-========================= */
-
-.cup-scene{
-  background:#272826;
-}
-
-.cup-light{
-  position:absolute;
-  width:700px;
-  height:700px;
-  right:-250px;
-  bottom:-300px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(219,194,151,.18),
-    transparent 68%
-  );
-  filter:blur(30px);
-}
-
-.cup-palm{
-  position:absolute;
-  right:-80px;
-  top:-120px;
-  width:500px;
-  height:700px;
-  opacity:.08;
-  transform:rotate(-12deg);
-  background:
-    linear-gradient(70deg,transparent 47%,#111 48%,transparent 50%);
-}
-
-.cup-content{
-  position:absolute;
-  left:10%;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.cup-label{
-  font-size:.6rem;
-  letter-spacing:.35em;
-  color:#aaa69e;
-  margin-bottom:18px;
-}
-
-.cup-title{
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(4rem,8vw,7rem);
-  font-weight:300;
-}
-
-.cup-subtitle{
-  margin-top:25px;
-  color:#bbb8b1;
-  max-width:420px;
-  line-height:1.8;
-  font-size:.9rem;
-}
-
-.cup-name{
-  margin-top:30px;
-  font-size:.65rem;
-  letter-spacing:.3em;
-  color:#aaa69e;
-}
-
-.cup-footer{
-  position:absolute;
-  bottom:30px;
-  left:10%;
-  font-size:.55rem;
-  letter-spacing:.25em;
-  color:#77746f;
-}
-
-/* =========================
-   DIARY
-========================= */
-
-.diary-scene{
-  background:#292a28;
-}
-
-.diary-glow{
-  position:absolute;
-  width:800px;
-  height:800px;
-  left:-350px;
-  top:-250px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(222,199,157,.13),
-    transparent 68%
-  );
-  filter:blur(35px);
-}
-
-.diary-palm{
-  position:absolute;
-  right:-100px;
-  top:-160px;
-  width:650px;
-  height:850px;
-  opacity:.07;
-  transform:rotate(18deg);
-  background:
-    linear-gradient(75deg,transparent 48%,#111 49%,transparent 50%),
-    linear-gradient(105deg,transparent 47%,#111 48%,transparent 49%);
-}
-
-.diary-content{
-  position:absolute;
-  left:10%;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.diary-lines{
-  margin-top:38px;
-  display:grid;
-  gap:18px;
-  max-width:650px;
-}
-
-.diary-line{
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(1.5rem,3vw,2.3rem);
-  color:#c8c4bb;
-  opacity:0;
-  transform:translateY(15px);
-  animation:diaryReveal 1.4s ease forwards;
-}
-
-.diary-line:nth-child(1){
-  animation-delay:.5s;
-}
-
-.diary-line:nth-child(2){
-  animation-delay:1.5s;
-}
-
-.diary-line:nth-child(3){
-  animation-delay:2.5s;
-}
-
-.diary-small{
-  margin-top:38px;
-  font-size:.6rem;
-  letter-spacing:.3em;
-  color:#77746f;
-}
-
-/* =========================
-   NIGHT
-========================= */
-
-.night-scene{
-  background:#171817;
-}
-
-.night-glow{
-  position:absolute;
-  width:500px;
-  height:500px;
-  left:50%;
-  top:55%;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(213,181,128,.18),
-    rgba(213,181,128,.06) 35%,
-    transparent 70%
-  );
-  filter:blur(25px);
-  animation:nightBreath 8s ease-in-out infinite;
-}
-
-.night-shadow{
-  position:absolute;
-  right:-120px;
-  top:-100px;
-  width:600px;
-  height:800px;
-  opacity:.1;
-  transform:rotate(-15deg);
-  background:
-    linear-gradient(
-      75deg,
-      transparent 46%,
-      #050505 47%,
-      transparent 49%
-    ),
-    linear-gradient(
-      105deg,
-      transparent 48%,
-      #050505 49%,
-      transparent 51%
-    );
-}
-
-.night-content{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
+.content{
+  width:min(900px,88%);
   text-align:center;
-  width:90%;
-  z-index:3;
-}
-
-.night-label{
-  font-size:.6rem;
-  letter-spacing:.4em;
-  color:#817d75;
-  margin-bottom:25px;
-}
-
-.night-title{
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(3.5rem,7vw,6.5rem);
-  font-weight:300;
-  line-height:.95;
-}
-
-.night-text{
-  margin:30px auto 0;
-  max-width:430px;
-  color:#8e8b84;
-  font-size:.85rem;
-  line-height:1.9;
-}
-
-.night-line{
-  width:1px;
-  height:70px;
-  background:rgba(241,238,232,.2);
-  margin:35px auto 0;
-}
-
-/* =========================
-   FINAL
-========================= */
-
-.final-scene{
-  background:#111211;
+  position:relative;
   z-index:20;
 }
 
-.final-light{
-  position:absolute;
-  width:900px;
-  height:900px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) scale(.2);
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(224,198,148,.22),
-    rgba(224,198,148,.09) 28%,
-    transparent 70%
-  );
-  filter:blur(35px);
-  opacity:0;
-  animation:finalLight 5s ease forwards;
-}
-
-.final-palm{
-  position:absolute;
-  right:-180px;
-  top:-180px;
-  width:700px;
-  height:900px;
-  opacity:0;
-  transform:rotate(20deg) scale(1.2);
-  background:
-    linear-gradient(
-      72deg,
-      transparent 47%,
-      #050505 48%,
-      transparent 50%
-    ),
-    linear-gradient(
-      103deg,
-      transparent 46%,
-      #050505 47%,
-      transparent 49%
-    );
-  animation:finalPalm 5s ease forwards;
-}
-
-.final-content{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) scale(1.12);
-  width:90%;
-  text-align:center;
-  opacity:0;
-  animation:finalText 5s ease forwards;
-  z-index:3;
-}
-
-.final-small{
-  font-size:.6rem;
-  letter-spacing:.45em;
-  color:#918d84;
+.eyebrow{
+  font-size:11px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#aaa69d;
   margin-bottom:25px;
 }
 
-.final-title{
+h1,h2{
   font-family:"Cormorant Garamond",serif;
-  font-weight:300;
-  line-height:.82;
+  font-weight:400;
+  line-height:.9;
 }
 
-.final-title .welcome{
-  display:block;
-  font-size:clamp(4.5rem,11vw,9rem);
+.hero-title{
+  font-size:clamp(65px,11vw,145px);
+  letter-spacing:-4px;
 }
 
-.final-title .to{
-  display:block;
-  font-size:clamp(2.4rem,5vw,4rem);
-  margin:12px 0;
-  color:#b9b5ac;
+.chapter-title{
+  font-size:clamp(65px,10vw,125px);
+  letter-spacing:-3px;
 }
 
-.final-title .swahili{
-  display:block;
-  font-size:clamp(4rem,9vw,8rem);
+.subtitle{
+  margin-top:28px;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#aaa69d;
 }
 
-.final-subtitle{
-  margin-top:38px;
-  font-size:.6rem;
-  letter-spacing:.35em;
-  color:#8d8981;
+.description{
+  max-width:600px;
+  margin:30px auto 0;
+  font-size:16px;
+  line-height:1.8;
+  color:#c7c4bc;
 }
 
-.final-footer{
+.divider{
+  width:50px;
+  height:1px;
+  background:#aaa69d;
+  margin:35px auto;
+  opacity:.5;
+}
+
+.small-list{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px;
+  margin-top:35px;
+}
+
+.small-list span{
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#aaa69d;
+}
+
+.note{
+  margin-top:40px;
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#88877f;
+}
+
+.footer{
   position:absolute;
-  bottom:28px;
+  bottom:35px;
   left:0;
-  width:100%;
+  right:0;
   text-align:center;
-  font-size:.5rem;
-  letter-spacing:.3em;
-  color:#66635d;
-  opacity:0;
-  animation:finalFooter 6s ease forwards;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#77776f;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
+/* OPENING */
 
-@keyframes breath{
-
-  0%,100%{
-    transform:scale(.95);
-    opacity:.7;
-  }
-
-  50%{
-    transform:scale(1.05);
-    opacity:1;
-  }
-
+.enter{
+  margin-top:45px;
+  border:1px solid rgba(255,255,255,.2);
+  background:transparent;
+  color:#eeeae2;
+  padding:15px 30px;
+  font-family:"DM Sans",sans-serif;
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.4s ease;
 }
 
-@keyframes palmMove{
-
-  0%{
-    transform:rotate(12deg) translateX(0);
-  }
-
-  100%{
-    transform:rotate(17deg) translateX(-25px);
-  }
-
+.enter:hover{
+  background:#eeeae2;
+  color:#202322;
 }
 
-@keyframes diaryReveal{
+/* FINAL */
+
+.final-scene{
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,221,160,.14),
+      transparent 40%
+    ),
+    #171817;
+}
+
+.final-scene .content{
+  animation:finalReveal 5s ease forwards;
+}
+
+@keyframes finalReveal{
+  from{
+    transform:scale(1.08);
+    opacity:0;
+  }
 
   to{
+    transform:scale(1);
     opacity:1;
-    transform:translateY(0);
   }
-
 }
 
-@keyframes nightBreath{
-
-  0%,100%{
-    transform:translate(-50%,-50%) scale(.9);
-    opacity:.65;
-  }
-
-  50%{
-    transform:translate(-50%,-50%) scale(1.08);
-    opacity:1;
-  }
-
+.final-welcome{
+  font-size:clamp(13px,2vw,18px);
+  letter-spacing:8px;
+  text-transform:uppercase;
+  color:#aaa69d;
+  margin-bottom:25px;
 }
 
-@keyframes finalLight{
-
-  0%{
-    opacity:0;
-    transform:translate(-50%,-50%) scale(.2);
-  }
-
-  35%{
-    opacity:.45;
-  }
-
-  100%{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(1);
-  }
-
+.final-main{
+  font-size:clamp(65px,11vw,145px);
 }
 
-@keyframes finalPalm{
-
-  0%{
-    opacity:0;
-    transform:rotate(20deg) scale(1.2) translateX(80px);
-  }
-
-  45%{
-    opacity:.06;
-  }
-
-  100%{
-    opacity:.1;
-    transform:rotate(13deg) scale(1) translateX(0);
-  }
-
+.final-small{
+  margin-top:35px;
+  font-size:11px;
+  letter-spacing:5px;
+  color:#aaa69d;
 }
 
-@keyframes finalText{
+/* MOBILE */
 
-  0%{
-    opacity:0;
-    transform:translate(-50%,-50%) scale(1.12);
+@media(max-width:600px){
+
+  .hero-title,
+  .chapter-title,
+  .final-main{
+    font-size:68px;
   }
 
-  45%{
-    opacity:0;
+  .description{
+    font-size:14px;
   }
 
-  70%{
-    opacity:1;
+  .small-list{
+    gap:12px;
   }
 
-  100%{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(1);
-  }
-
-}
-
-@keyframes finalFooter{
-
-  0%,60%{
-    opacity:0;
-  }
-
-  100%{
-    opacity:1;
+  .small-list span{
+    font-size:9px;
   }
 
 }
@@ -848,12 +361,14 @@ h1{
 
 <body>
 
+<div class="kitchen">
+  <div class="palm-shadow"></div>
+</div>
+
 
 <!-- OPENING -->
 
-<section class="opening" id="opening">
-
-  <div class="light"></div>
+<section class="scene active" id="openingScene">
 
   <div class="content">
 
@@ -861,17 +376,16 @@ h1{
       A LITTLE PLACE OF MY OWN
     </div>
 
-    <h1>
-      The Jeff<br>
-      Kitchen
+    <h1 class="hero-title">
+      The Jeff Kitchen
     </h1>
 
     <div class="subtitle">
-      FOOD · STORIES · LITTLE MOMENTS
+      Food · Stories · Little Moments
     </div>
 
     <button class="enter" onclick="enterKitchen()">
-      ENTER
+      Enter Kitchen
     </button>
 
   </div>
@@ -885,25 +399,20 @@ h1{
 
 <!-- WHERE I COOK -->
 
-<section class="scene scene-two" id="sceneTwo">
+<section class="scene" id="sceneTwo">
 
-  <div class="sun"></div>
-  <div class="scene-palm"></div>
-  <div class="surface"></div>
+  <div class="content">
 
-  <div class="scene-content">
-
-    <div class="chapter">
+    <div class="eyebrow">
       CHAPTER ONE
     </div>
 
-    <div class="scene-title">
+    <h2 class="chapter-title">
       Where I cook.
-    </div>
+    </h2>
 
-    <div class="scene-text">
-      Rice. Eggs. Experiments.<br>
-      Whatever I'm craving.
+    <div class="description">
+      Rice. Eggs. Experiments. Whatever I'm craving.
     </div>
 
   </div>
@@ -913,21 +422,19 @@ h1{
 
 <!-- THE FOOD -->
 
-<section class="scene food-scene" id="foodScene">
+<section class="scene" id="foodScene">
 
-  <div class="food-light"></div>
+  <div class="content">
 
-  <div class="food-content">
-
-    <div class="chapter">
+    <div class="eyebrow">
       CHAPTER TWO
     </div>
 
-    <div class="scene-title">
+    <h2 class="chapter-title">
       The Food.
-    </div>
+    </h2>
 
-    <div class="food-list">
+    <div class="small-list">
       <span>Rice</span>
       <span>Eggs</span>
       <span>Biryani</span>
@@ -941,32 +448,28 @@ h1{
 
 <!-- RICE -->
 
-<section class="scene rice-scene" id="riceScene">
+<section class="scene" id="riceScene">
 
-  <div class="rice-glow"></div>
-  <div class="rice-palm"></div>
+  <div class="content">
 
-  <div class="rice-content">
-
-    <div class="chapter">
+    <div class="eyebrow">
       THE FIRST LOVE
     </div>
 
-    <div class="scene-title">
+    <h2 class="chapter-title">
       Rice.
-    </div>
+    </h2>
 
-    <div class="scene-text">
-      The kind of food that somehow always
-      finds its way into the kitchen.
+    <div class="description">
+      The kind of food that somehow always finds its way into the kitchen.
       Simple meals. Experiments. Comfort.
     </div>
 
-    <div class="rice-list">
-      <div>Creamy mashed-potato rice</div>
-      <div>Chef Jeff fried rice</div>
-      <div>Biryani</div>
-      <div>Pilau</div>
+    <div class="small-list">
+      <span>Creamy Mashed-Potato Rice</span>
+      <span>Chef Jeff Fried Rice</span>
+      <span>Biryani</span>
+      <span>Pilau</span>
     </div>
 
   </div>
@@ -976,36 +479,32 @@ h1{
 
 <!-- QUICK KITCHEN -->
 
-<section class="scene quick-scene" id="quickScene">
+<section class="scene" id="quickScene">
 
-  <div class="quick-glow"></div>
-  <div class="quick-floor"></div>
+  <div class="content">
 
-  <div class="quick-content">
-
-    <div class="chapter">
+    <div class="eyebrow">
       CHAPTER THREE
     </div>
 
-    <div class="scene-title">
+    <h2 class="chapter-title">
       Quick Kitchen.
-    </div>
+    </h2>
 
-    <div class="scene-text">
-      Not every meal needs a plan.
-      Sometimes you just open the fridge,
+    <div class="description">
+      Not every meal needs a plan. Sometimes you just open the fridge,
       look around, and make something.
     </div>
 
-    <div class="quick-list">
-      <div>Scrambled eggs</div>
-      <div>Sweet potato fries</div>
-      <div>Lazy dinners</div>
-      <div>Random experiments</div>
+    <div class="small-list">
+      <span>Scrambled Eggs</span>
+      <span>Sweet Potato Fries</span>
+      <span>Lazy Dinners</span>
+      <span>Random Experiments</span>
     </div>
 
-    <div class="diary-small">
-      SOMETIMES SIMPLE IS ENOUGH
+    <div class="note">
+      Sometimes simple is enough
     </div>
 
   </div>
@@ -1015,34 +514,32 @@ h1{
 
 <!-- THE CUP -->
 
-<section class="scene cup-scene" id="cupScene">
+<section class="scene" id="cupScene">
 
-  <div class="cup-light"></div>
-  <div class="cup-palm"></div>
+  <div class="content">
 
-  <div class="cup-content">
-
-    <div class="cup-label">
+    <div class="eyebrow">
       A LITTLE SWEETNESS
     </div>
 
-    <div class="cup-title">
+    <h2 class="chapter-title">
       The Cup.
+    </h2>
+
+    <div class="description">
+      Sometimes the kitchen isn't about a full meal.
+      Sometimes it's just about making something you enjoy.
     </div>
 
-    <div class="cup-subtitle">
-      Sometimes the kitchen isn't about
-      a full meal. Sometimes it's just about
-      making something you enjoy.
-    </div>
+    <div class="divider"></div>
 
-    <div class="cup-name">
-      OREO · CERELAC · MILK
+    <div class="subtitle">
+      Oreo · Cerelac · Milk
     </div>
 
   </div>
 
-  <div class="cup-footer">
+  <div class="footer">
     CHEF JEFF · LITTLE MOMENTS
   </div>
 
@@ -1051,39 +548,26 @@ h1{
 
 <!-- KITCHEN DIARY -->
 
-<section class="scene diary-scene" id="diaryScene">
+<section class="scene" id="diaryScene">
 
-  <div class="diary-glow"></div>
-  <div class="diary-palm"></div>
+  <div class="content">
 
-  <div class="diary-content">
-
-    <div class="chapter">
+    <div class="eyebrow">
       CHAPTER FOUR
     </div>
 
-    <div class="scene-title">
+    <h2 class="chapter-title">
       Kitchen Diary.
+    </h2>
+
+    <div class="description">
+      Some days I cook because I'm hungry.<br><br>
+      Some days I cook because I need a moment.<br><br>
+      And sometimes I just want to try something new.
     </div>
 
-    <div class="diary-lines">
-
-      <div class="diary-line">
-        Some days I cook because I'm hungry.
-      </div>
-
-      <div class="diary-line">
-        Some days I cook because I need a moment.
-      </div>
-
-      <div class="diary-line">
-        And sometimes I just want to try something new.
-      </div>
-
-    </div>
-
-    <div class="diary-small">
-      LITTLE EXPERIMENTS · LITTLE MEMORIES
+    <div class="note">
+      Little experiments · Little memories
     </div>
 
   </div>
@@ -1093,28 +577,23 @@ h1{
 
 <!-- NIGHT KITCHEN -->
 
-<section class="scene night-scene" id="nightScene">
+<section class="scene" id="nightScene">
 
-  <div class="night-glow"></div>
-  <div class="night-shadow"></div>
+  <div class="content">
 
-  <div class="night-content">
-
-    <div class="night-label">
+    <div class="eyebrow">
       CHAPTER FIVE
     </div>
 
-    <div class="night-title">
+    <h2 class="chapter-title">
       Night Kitchen.
-    </div>
+    </h2>
 
-    <div class="night-text">
+    <div class="description">
       The kitchen gets quieter at night.
       The lights get softer.
       And somehow, everything feels a little slower.
     </div>
-
-    <div class="night-line"></div>
 
   </div>
 
@@ -1125,38 +604,24 @@ h1{
 
 <section class="scene final-scene" id="finalScene">
 
-  <div class="final-light"></div>
-  <div class="final-palm"></div>
+  <div class="content">
 
-  <div class="final-content">
+    <div class="final-welcome">
+      Welcome
+    </div>
+
+    <h2 class="final-main">
+      To Chef Jeff’s<br>
+      Swahili Kitchen
+    </h2>
 
     <div class="final-small">
-      A LITTLE PLACE OF MY OWN
-    </div>
-
-    <div class="final-title">
-
-      <span class="welcome">
-        WELCOME
-      </span>
-
-      <span class="to">
-        TO CHEF JEFF’S
-      </span>
-
-      <span class="swahili">
-        SWAHILI KITCHEN
-      </span>
-
-    </div>
-
-    <div class="final-subtitle">
-      FOOD · STORIES · LITTLE MOMENTS
+      Food · Stories · Little Moments
     </div>
 
   </div>
 
-  <div class="final-footer">
+  <div class="footer">
     CHEF JEFF · 2026
   </div>
 
@@ -1165,67 +630,74 @@ h1{
 
 <script>
 
-const opening = document.getElementById("opening");
+const scenes = {
+  opening: document.getElementById("openingScene"),
+  where: document.getElementById("sceneTwo"),
+  food: document.getElementById("foodScene"),
+  rice: document.getElementById("riceScene"),
+  quick: document.getElementById("quickScene"),
+  cup: document.getElementById("cupScene"),
+  diary: document.getElementById("diaryScene"),
+  night: document.getElementById("nightScene"),
+  final: document.getElementById("finalScene")
+};
 
-const scenes = [
-  document.getElementById("sceneTwo"),
-  document.getElementById("foodScene"),
-  document.getElementById("riceScene"),
-  document.getElementById("quickScene"),
-  document.getElementById("cupScene"),
-  document.getElementById("diaryScene"),
-  document.getElementById("nightScene"),
-  document.getElementById("finalScene")
-];
+
+/* THIS IS THE IMPORTANT FIX */
 
 function showScene(scene){
 
-  scenes.forEach(currentScene => {
+  Object.values(scenes).forEach(function(currentScene){
+
     currentScene.classList.remove("active");
+
+    currentScene.style.opacity = "0";
+    currentScene.style.visibility = "hidden";
+    currentScene.style.pointerEvents = "none";
+
   });
 
   scene.classList.add("active");
 
+  scene.style.opacity = "1";
+  scene.style.visibility = "visible";
+  scene.style.pointerEvents = "auto";
 }
 
 
-/* START JOURNEY */
+/* STORY */
 
 function enterKitchen(){
 
-  opening.classList.add("hide");
+  showScene(scenes.where);
 
-  setTimeout(() => {
-    showScene(scenes[0]);
-  }, 900);
+  setTimeout(function(){
+    showScene(scenes.food);
+  },5600);
 
-  setTimeout(() => {
-    showScene(scenes[1]);
-  }, 6500);
+  setTimeout(function(){
+    showScene(scenes.rice);
+  },11600);
 
-  setTimeout(() => {
-    showScene(scenes[2]);
-  }, 12500);
+  setTimeout(function(){
+    showScene(scenes.quick);
+  },17100);
 
-  setTimeout(() => {
-    showScene(scenes[3]);
-  }, 18000);
+  setTimeout(function(){
+    showScene(scenes.cup);
+  },22600);
 
-  setTimeout(() => {
-    showScene(scenes[4]);
-  }, 23500);
+  setTimeout(function(){
+    showScene(scenes.diary);
+  },28100);
 
-  setTimeout(() => {
-    showScene(scenes[5]);
-  }, 29000);
+  setTimeout(function(){
+    showScene(scenes.night);
+  },34100);
 
-  setTimeout(() => {
-    showScene(scenes[6]);
-  }, 35000);
-
-  setTimeout(() => {
-    showScene(scenes[7]);
-  }, 43000);
+  setTimeout(function(){
+    showScene(scenes.final);
+  },42100);
 
 }
 
