@@ -31,7 +31,9 @@ body{
   font-weight:300;
 }
 
-/* OPENING */
+/* =========================
+   OPENING
+========================= */
 
 .opening{
   position:absolute;
@@ -123,7 +125,9 @@ h1{
   color:#77746f;
 }
 
-/* COMMON */
+/* =========================
+   COMMON
+========================= */
 
 .scene{
   position:absolute;
@@ -167,7 +171,9 @@ h1{
   color:#bbb8b1;
 }
 
-/* WHERE I COOK */
+/* =========================
+   WHERE I COOK
+========================= */
 
 .scene-two{
   background:#292a28;
@@ -207,7 +213,9 @@ h1{
   border-top:1px solid rgba(255,255,255,.05);
 }
 
-/* FOOD */
+/* =========================
+   FOOD
+========================= */
 
 .food-scene{
   background:#282927;
@@ -246,7 +254,9 @@ h1{
   color:#c8c4bb;
 }
 
-/* RICE */
+/* =========================
+   RICE
+========================= */
 
 .rice-scene{
   background:#262725;
@@ -299,7 +309,9 @@ h1{
   color:#c4c0b8;
 }
 
-/* QUICK KITCHEN */
+/* =========================
+   QUICK KITCHEN
+========================= */
 
 .quick-scene{
   background:#292a28;
@@ -347,7 +359,9 @@ h1{
   background:#222321;
 }
 
-/* CUP */
+/* =========================
+   THE CUP
+========================= */
 
 .cup-scene{
   background:#272826;
@@ -424,7 +438,9 @@ h1{
   color:#77746f;
 }
 
-/* KITCHEN DIARY */
+/* =========================
+   KITCHEN DIARY
+========================= */
 
 .diary-scene{
   background:#292a28;
@@ -501,7 +517,9 @@ h1{
   color:#77746f;
 }
 
-/* NIGHT KITCHEN */
+/* =========================
+   NIGHT KITCHEN
+========================= */
 
 .night-scene{
   background:#171817;
@@ -588,9 +606,127 @@ h1{
   margin:35px auto 0;
 }
 
-/* ANIMATIONS */
+/* =========================
+   FINAL REVEAL
+========================= */
+
+.final-scene{
+  background:#111211;
+  z-index:20;
+}
+
+.final-light{
+  position:absolute;
+  width:900px;
+  height:900px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.2);
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(224,198,148,.22) 0%,
+    rgba(224,198,148,.09) 28%,
+    transparent 70%
+  );
+  filter:blur(35px);
+  opacity:0;
+  animation:finalLight 5s ease forwards;
+}
+
+.final-palm{
+  position:absolute;
+  right:-180px;
+  top:-180px;
+  width:700px;
+  height:900px;
+  opacity:0;
+  transform:rotate(20deg) scale(1.2);
+  background:
+    linear-gradient(
+      72deg,
+      transparent 47%,
+      #050505 48%,
+      transparent 50%
+    ),
+    linear-gradient(
+      103deg,
+      transparent 46%,
+      #050505 47%,
+      transparent 49%
+    );
+  animation:finalPalm 5s ease forwards;
+}
+
+.final-content{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(1.12);
+  width:90%;
+  text-align:center;
+  opacity:0;
+  animation:finalText 5s ease forwards;
+  z-index:3;
+}
+
+.final-small{
+  font-size:.6rem;
+  letter-spacing:.45em;
+  color:#918d84;
+  margin-bottom:25px;
+}
+
+.final-title{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:300;
+  line-height:.82;
+  color:#f1eee8;
+}
+
+.final-title .welcome{
+  display:block;
+  font-size:clamp(4.5rem,11vw,9rem);
+}
+
+.final-title .to{
+  display:block;
+  font-size:clamp(2.4rem,5vw,4rem);
+  margin:12px 0;
+  color:#b9b5ac;
+}
+
+.final-title .swahili{
+  display:block;
+  font-size:clamp(4rem,9vw,8rem);
+}
+
+.final-subtitle{
+  margin-top:38px;
+  font-size:.6rem;
+  letter-spacing:.35em;
+  color:#8d8981;
+}
+
+.final-footer{
+  position:absolute;
+  bottom:28px;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:.5rem;
+  letter-spacing:.3em;
+  color:#66635d;
+  opacity:0;
+  animation:finalFooter 6s ease forwards;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
 
 @keyframes breath{
+
   0%,100%{
     transform:scale(.95);
     opacity:.7;
@@ -600,9 +736,11 @@ h1{
     transform:scale(1.05);
     opacity:1;
   }
+
 }
 
 @keyframes palmMove{
+
   0%{
     transform:rotate(12deg) translateX(0);
   }
@@ -610,16 +748,20 @@ h1{
   100%{
     transform:rotate(17deg) translateX(-25px);
   }
+
 }
 
 @keyframes diaryReveal{
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 @keyframes nightBreath{
+
   0%,100%{
     transform:translate(-50%,-50%) scale(.9);
     opacity:.65;
@@ -629,9 +771,11 @@ h1{
     transform:translate(-50%,-50%) scale(1.08);
     opacity:1;
   }
+
 }
 
 @keyframes nightPalm{
+
   0%{
     transform:rotate(-15deg) translateX(0);
   }
@@ -639,6 +783,77 @@ h1{
   100%{
     transform:rotate(-10deg) translateX(-30px);
   }
+
+}
+
+@keyframes finalLight{
+
+  0%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.2);
+  }
+
+  35%{
+    opacity:.45;
+  }
+
+  100%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+  }
+
+}
+
+@keyframes finalPalm{
+
+  0%{
+    opacity:0;
+    transform:rotate(20deg) scale(1.2) translateX(80px);
+  }
+
+  45%{
+    opacity:.06;
+  }
+
+  100%{
+    opacity:.1;
+    transform:rotate(13deg) scale(1) translateX(0);
+  }
+
+}
+
+@keyframes finalText{
+
+  0%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(1.12);
+  }
+
+  45%{
+    opacity:0;
+  }
+
+  70%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+  }
+
+}
+
+@keyframes finalFooter{
+
+  0%,60%{
+    opacity:0;
+  }
+
+  100%{
+    opacity:1;
+  }
+
 }
 
 </style>
@@ -646,7 +861,10 @@ h1{
 
 <body>
 
-<!-- OPENING -->
+
+<!-- =========================
+     OPENING
+========================= -->
 
 <section class="opening" id="opening">
 
@@ -680,7 +898,9 @@ h1{
 </section>
 
 
-<!-- WHERE I COOK -->
+<!-- =========================
+     WHERE I COOK
+========================= -->
 
 <section class="scene scene-two" id="sceneTwo">
 
@@ -708,7 +928,9 @@ h1{
 </section>
 
 
-<!-- THE FOOD -->
+<!-- =========================
+     THE FOOD
+========================= -->
 
 <section class="scene food-scene" id="foodScene">
 
@@ -739,7 +961,9 @@ h1{
 </section>
 
 
-<!-- RICE -->
+<!-- =========================
+     RICE
+========================= -->
 
 <section class="scene rice-scene" id="riceScene">
 
@@ -776,7 +1000,9 @@ h1{
 </section>
 
 
-<!-- QUICK KITCHEN -->
+<!-- =========================
+     QUICK KITCHEN
+========================= -->
 
 <section class="scene quick-scene" id="quickScene">
 
@@ -817,7 +1043,9 @@ h1{
 </section>
 
 
-<!-- THE CUP -->
+<!-- =========================
+     THE CUP
+========================= -->
 
 <section class="scene cup-scene" id="cupScene">
 
@@ -853,7 +1081,9 @@ h1{
 </section>
 
 
-<!-- KITCHEN DIARY -->
+<!-- =========================
+     KITCHEN DIARY
+========================= -->
 
 <section class="scene diary-scene" id="diaryScene">
 
@@ -895,7 +1125,9 @@ h1{
 </section>
 
 
-<!-- NIGHT KITCHEN -->
+<!-- =========================
+     NIGHT KITCHEN
+========================= -->
 
 <section class="scene night-scene" id="nightScene">
 
@@ -925,16 +1157,71 @@ h1{
 </section>
 
 
+<!-- =========================
+     FINAL REVEAL
+========================= -->
+
+<section class="scene final-scene" id="finalScene">
+
+  <div class="final-light"></div>
+
+  <div class="final-palm"></div>
+
+  <div class="final-content">
+
+    <div class="final-small">
+      A LITTLE PLACE OF MY OWN
+    </div>
+
+    <div class="final-title">
+
+      <span class="welcome">
+        WELCOME
+      </span>
+
+      <span class="to">
+        TO CHEF JEFF’S
+      </span>
+
+      <span class="swahili">
+        SWAHILI KITCHEN
+      </span>
+
+    </div>
+
+    <div class="final-subtitle">
+      FOOD · STORIES · LITTLE MOMENTS
+    </div>
+
+  </div>
+
+  <div class="final-footer">
+    CHEF JEFF · 2026
+  </div>
+
+</section>
+
+
 <script>
 
 const opening = document.getElementById("opening");
+
 const sceneTwo = document.getElementById("sceneTwo");
+
 const foodScene = document.getElementById("foodScene");
+
 const riceScene = document.getElementById("riceScene");
+
 const quickScene = document.getElementById("quickScene");
+
 const cupScene = document.getElementById("cupScene");
+
 const diaryScene = document.getElementById("diaryScene");
+
 const nightScene = document.getElementById("nightScene");
+
+const finalScene = document.getElementById("finalScene");
+
 
 function enterKitchen(){
 
@@ -967,6 +1254,10 @@ function enterKitchen(){
   setTimeout(() => {
     nightScene.classList.add("active");
   }, 35000);
+
+  setTimeout(() => {
+    finalScene.classList.add("active");
+  }, 43000);
 
 }
 
