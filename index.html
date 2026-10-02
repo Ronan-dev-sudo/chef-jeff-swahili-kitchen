@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>The Jeff Kitchen</title>
+  <title>Chef Jeff's Swahili Kitchen</title>
 
   <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
 
     * {
       margin: 0;
@@ -23,15 +23,19 @@
       overflow: hidden;
     }
 
-    /* MAIN OPENING */
+    /* =========================
+       OPENING
+    ========================= */
 
     .opening {
       height: 100vh;
       width: 100%;
       position: relative;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       overflow: hidden;
 
       background:
@@ -41,12 +45,21 @@
           #303431 40%,
           #202322 80%
         );
+
+      transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
     }
 
-    /* SOFT MOVING LIGHT */
+    .opening.exit {
+      opacity: 0;
+      transform: scale(1.08);
+      pointer-events: none;
+    }
 
     .light {
       position: absolute;
+
       width: 600px;
       height: 600px;
 
@@ -71,45 +84,44 @@
 
     }
 
-    /* PALM SHADOWS */
+    /* PALMS */
 
     .palm {
       position: absolute;
+
       font-size: 13rem;
 
       opacity: 0.06;
 
       filter: grayscale(1);
 
-      animation: palmMove 9s ease-in-out infinite alternate;
+      animation: palmMove 8s ease-in-out infinite alternate;
     }
 
     .palm.left {
       left: -70px;
       bottom: -40px;
-      transform: rotate(-15deg);
     }
 
     .palm.right {
       right: -80px;
       top: -30px;
-      transform: rotate(25deg);
       animation-delay: 2s;
     }
 
     @keyframes palmMove {
 
       from {
-        transform: translateY(0) rotate(-15deg);
+        transform: translateY(0) rotate(-5deg);
       }
 
       to {
-        transform: translateY(-18px) rotate(-10deg);
+        transform: translateY(-18px) rotate(5deg);
       }
 
     }
 
-    /* CONTENT */
+    /* TITLE */
 
     .content {
       position: relative;
@@ -144,8 +156,6 @@
       color: #bcb8ae;
 
       margin-bottom: 25px;
-
-      font-weight: 400;
 
     }
 
@@ -225,8 +235,6 @@
 
     }
 
-    /* BOTTOM TEXT */
-
     .bottom {
 
       position: absolute;
@@ -247,20 +255,349 @@
 
     }
 
+    /* =========================
+       KITCHEN SCENE
+    ========================= */
+
+    .kitchen {
+
+      position: fixed;
+
+      inset: 0;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          rgba(35,35,32,0.25),
+          rgba(25,25,23,0.75)
+        ),
+
+        linear-gradient(
+          120deg,
+          #85837a,
+          #555852 45%,
+          #302f2b
+        );
+
+      transition: opacity 2s ease;
+
+      overflow: hidden;
+    }
+
+    .kitchen.active {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+    /* SUNLIGHT */
+
+    .sunlight {
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      top: -180px;
+      left: 10%;
+
+      background: rgba(239,225,186,0.18);
+
+      filter: blur(80px);
+
+      border-radius: 50%;
+
+      animation: sunlightMove 10s ease-in-out infinite alternate;
+
+    }
+
+    @keyframes sunlightMove {
+
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(250px);
+      }
+
+    }
+
+    /* BACK WALL */
+
+    .wall {
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: 25%;
+
+      height: 45%;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.05),
+          rgba(0,0,0,0.15)
+        );
+
+      border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    }
+
+    /* COUNTER */
+
+    .counter {
+
+      position: absolute;
+
+      left: 5%;
+      right: 5%;
+
+      bottom: 13%;
+
+      height: 12%;
+
+      background:
+        linear-gradient(
+          #54483e,
+          #302b27
+        );
+
+      border-radius: 5px;
+
+      box-shadow:
+        0 25px 50px rgba(0,0,0,0.45);
+
+    }
+
+    /* POT */
+
+    .pot {
+
+      position: absolute;
+
+      bottom: 23%;
+
+      left: 23%;
+
+      width: 150px;
+
+      height: 90px;
+
+      background:
+        linear-gradient(
+          #4c4d48,
+          #222320
+        );
+
+      border-radius:
+        10px 10px 35px 35px;
+
+      box-shadow:
+        0 20px 35px rgba(0,0,0,0.45);
+
+    }
+
+    .pot::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+
+      height: 18px;
+
+      left: -10px;
+
+      top: -7px;
+
+      border-radius: 50%;
+
+      background: #252623;
+
+    }
+
+    /* PAN */
+
+    .pan {
+
+      position: absolute;
+
+      bottom: 23%;
+
+      right: 22%;
+
+      width: 150px;
+
+      height: 35px;
+
+      border-radius: 50%;
+
+      background: #1d1e1c;
+
+      box-shadow:
+        0 20px 35px rgba(0,0,0,0.4);
+
+    }
+
+    .pan::after {
+
+      content: "";
+
+      position: absolute;
+
+      right: -100px;
+
+      top: 5px;
+
+      width: 110px;
+
+      height: 12px;
+
+      background: #272722;
+
+      border-radius: 10px;
+
+      transform: rotate(-8deg);
+
+    }
+
+    /* STEAM */
+
+    .steam {
+
+      position: absolute;
+
+      bottom: 34%;
+
+      left: 28%;
+
+      width: 8px;
+
+      height: 100px;
+
+      border-radius: 50%;
+
+      background: rgba(240,238,224,0.15);
+
+      filter: blur(8px);
+
+      animation: steamRise 3s ease-in-out infinite;
+
+    }
+
+    @keyframes steamRise {
+
+      0% {
+        opacity: 0;
+        transform:
+          translateY(20px)
+          scale(0.8);
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translateY(-70px)
+          scale(1.5);
+      }
+
+    }
+
+    .steam.two {
+
+      left: 32%;
+
+      animation-delay: 1s;
+
+    }
+
+    /* KITCHEN TEXT */
+
+    .kitchen-content {
+
+      position: absolute;
+
+      top: 18%;
+
+      left: 9%;
+
+      max-width: 600px;
+
+    }
+
+    .chapter {
+
+      font-size: 0.7rem;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: #d0c7b5;
+
+      margin-bottom: 20px;
+
+    }
+
+    .kitchen h2 {
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(3rem, 7vw, 6rem);
+
+      font-weight: 400;
+
+      line-height: 0.9;
+
+    }
+
+    .kitchen-text {
+
+      margin-top: 25px;
+
+      max-width: 430px;
+
+      color: #d0cec6;
+
+      line-height: 1.7;
+
+      font-size: 0.95rem;
+
+    }
+
   </style>
 
 </head>
 
 <body>
 
-  <main class="opening">
+  <!-- OPENING -->
+
+  <section class="opening" id="opening">
 
     <div class="light"></div>
 
     <div class="palm left">🌴</div>
 
     <div class="palm right">🌴</div>
-
 
     <div class="content">
 
@@ -277,18 +614,92 @@
         FOOD · STORIES · LITTLE MOMENTS
       </div>
 
-      <button class="enter">
+      <button
+        class="enter"
+        onclick="enterKitchen()">
+
         Enter
+
       </button>
 
     </div>
-
 
     <div class="bottom">
       CHEF JEFF · 2026
     </div>
 
-  </main>
+  </section>
+
+
+  <!-- KITCHEN -->
+
+  <section
+    class="kitchen"
+    id="kitchen">
+
+    <div class="sunlight"></div>
+
+    <div class="wall"></div>
+
+    <div class="kitchen-content">
+
+      <div class="chapter">
+        CHAPTER ONE
+      </div>
+
+      <h2>
+        Come into<br>
+        the kitchen.
+      </h2>
+
+      <p class="kitchen-text">
+
+        This isn't a restaurant.
+        It's just my little corner of the world —
+        where rice gets experimented on,
+        eggs get thrown into pans,
+        and somehow dinner always happens.
+
+      </p>
+
+    </div>
+
+    <div class="counter"></div>
+
+    <div class="pot"></div>
+
+    <div class="pan"></div>
+
+    <div class="steam"></div>
+
+    <div class="steam two"></div>
+
+  </section>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function enterKitchen() {
+
+      const opening =
+        document.getElementById("opening");
+
+      const kitchen =
+        document.getElementById("kitchen");
+
+      opening.classList.add("exit");
+
+      setTimeout(function() {
+
+        kitchen.classList.add("active");
+
+      }, 900);
+
+    }
+
+  </script>
 
 </body>
 </html>
