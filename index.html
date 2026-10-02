@@ -35,9 +35,11 @@ body {
   height: 100vh;
   width: 100%;
   position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   overflow: hidden;
 
   background:
@@ -61,10 +63,15 @@ body {
 
 .light {
   position: absolute;
+
   width: 650px;
   height: 650px;
-  background: rgba(220, 211, 187, 0.09);
+
+  background:
+    rgba(220, 211, 187, 0.09);
+
   border-radius: 50%;
+
   filter: blur(100px);
 
   animation:
@@ -85,9 +92,12 @@ body {
 
 .palm-shadow {
   position: absolute;
+
   width: 500px;
   height: 700px;
+
   opacity: 0.055;
+
   filter: blur(3px);
 
   background:
@@ -129,7 +139,9 @@ body {
 
 .content {
   position: relative;
+
   z-index: 5;
+
   text-align: center;
 
   animation:
@@ -152,17 +164,28 @@ body {
 
 .small-title {
   font-size: 0.7rem;
+
   letter-spacing: 5px;
+
   text-transform: uppercase;
+
   color: #bcb8ae;
+
   margin-bottom: 25px;
 }
 
 h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:
+    clamp(4rem, 10vw, 8rem);
+
   font-weight: 400;
+
   line-height: 0.85;
+
   letter-spacing: -3px;
 }
 
@@ -173,56 +196,85 @@ h1 span {
 
 .subtitle {
   margin-top: 30px;
+
   font-size: 0.9rem;
+
   letter-spacing: 2px;
+
   color: #aaa9a1;
 }
 
 .enter {
   margin-top: 55px;
+
   background: transparent;
-  border: 1px solid rgba(235, 231, 220, 0.45);
+
+  border:
+    1px solid
+    rgba(235, 231, 220, 0.45);
+
   color: #eeeae1;
-  padding: 14px 35px;
+
+  padding:
+    14px 35px;
+
   border-radius: 50px;
 
-  font-family: 'DM Sans', sans-serif;
+  font-family:
+    'DM Sans',
+    sans-serif;
+
   font-size: 0.75rem;
+
   letter-spacing: 3px;
+
   text-transform: uppercase;
 
   cursor: pointer;
-  transition: all 0.4s ease;
+
+  transition:
+    all 0.4s ease;
 }
 
 .enter:hover {
   background: #eeeae1;
+
   color: #242625;
-  transform: translateY(-3px);
+
+  transform:
+    translateY(-3px);
 }
 
 .bottom {
   position: absolute;
+
   bottom: 30px;
+
   left: 0;
+
   width: 100%;
+
   text-align: center;
 
   font-size: 0.65rem;
+
   letter-spacing: 2px;
+
   color: #777a76;
 }
 
 
 /* =========================
-   SCENE TWO
+   WHERE I COOK
 ========================= */
 
 .scene-two {
   position: fixed;
+
   inset: 0;
 
   opacity: 0;
+
   pointer-events: none;
 
   overflow: hidden;
@@ -241,6 +293,7 @@ h1 span {
 
 .scene-two.active {
   opacity: 1;
+
   pointer-events: auto;
 }
 
@@ -321,6 +374,7 @@ h1 span {
 
   left: 0;
   right: 0;
+
   bottom: 0;
 
   height: 22%;
@@ -348,7 +402,9 @@ h1 span {
 
 .chapter {
   font-size: 0.7rem;
+
   letter-spacing: 5px;
+
   text-transform: uppercase;
 
   color: #d0c7b5;
@@ -365,6 +421,7 @@ h1 span {
     clamp(4rem, 8vw, 7rem);
 
   font-weight: 400;
+
   line-height: 0.9;
 
   color: #eeeae1;
@@ -376,6 +433,7 @@ h1 span {
   max-width: 420px;
 
   font-size: 0.9rem;
+
   line-height: 1.8;
 
   color: #c8c6bd;
@@ -383,14 +441,16 @@ h1 span {
 
 
 /* =========================
-   FOOD SCENE
+   THE FOOD
 ========================= */
 
 .food-scene {
   position: fixed;
+
   inset: 0;
 
   opacity: 0;
+
   pointer-events: none;
 
   background:
@@ -409,6 +469,7 @@ h1 span {
 
 .food-scene.active {
   opacity: 1;
+
   pointer-events: auto;
 }
 
@@ -448,7 +509,9 @@ h1 span {
   position: absolute;
 
   top: 20%;
+
   left: 10%;
+
   right: 10%;
 }
 
@@ -481,6 +544,7 @@ h1 span {
   margin-top: 55px;
 
   display: flex;
+
   flex-direction: column;
 
   gap: 12px;
@@ -524,7 +588,9 @@ h1 span {
 
   to {
     opacity: 1;
-    transform: translateX(0);
+
+    transform:
+      translateX(0);
   }
 
 }
@@ -533,6 +599,7 @@ h1 span {
   position: absolute;
 
   right: 10%;
+
   bottom: 13%;
 
   font-size: 0.65rem;
@@ -546,14 +613,16 @@ h1 span {
 
 
 /* =========================
-   RICE SCENE
+   RICE
 ========================= */
 
 .rice-scene {
   position: fixed;
+
   inset: 0;
 
   opacity: 0;
+
   pointer-events: none;
 
   overflow: hidden;
@@ -572,6 +641,7 @@ h1 span {
 
 .rice-scene.active {
   opacity: 1;
+
   pointer-events: auto;
 }
 
@@ -598,11 +668,13 @@ h1 span {
 @keyframes riceGlow {
 
   from {
-    transform: translate(0,0);
+    transform:
+      translate(0,0);
   }
 
   to {
-    transform: translate(250px,-100px);
+    transform:
+      translate(250px,-100px);
   }
 
 }
@@ -632,6 +704,7 @@ h1 span {
   position: absolute;
 
   left: 10%;
+
   top: 18%;
 
   max-width: 700px;
@@ -666,6 +739,7 @@ h1 span {
 
 .rice-line {
   width: 70px;
+
   height: 1px;
 
   background:
@@ -697,12 +771,16 @@ h1 span {
 
   from {
     opacity: 0;
-    transform: translateY(15px);
+
+    transform:
+      translateY(15px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 
 }
@@ -711,6 +789,7 @@ h1 span {
   position: absolute;
 
   right: 10%;
+
   bottom: 15%;
 
   text-align: right;
@@ -753,7 +832,9 @@ h1 span {
 
   to {
     opacity: 1;
-    transform: translateX(0);
+
+    transform:
+      translateX(0);
   }
 
 }
@@ -762,6 +843,7 @@ h1 span {
   position: absolute;
 
   bottom: 30px;
+
   left: 10%;
 
   font-size: 0.6rem;
@@ -773,6 +855,273 @@ h1 span {
   color: #777a76;
 }
 
+
+/* =========================
+   QUICK KITCHEN
+========================= */
+
+.quick-scene {
+  position: fixed;
+
+  inset: 0;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 70% 35%,
+      #555850 0%,
+      #343733 45%,
+      #202220 90%
+    );
+
+  transition:
+    opacity 2s ease;
+}
+
+.quick-scene.active {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+.quick-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: 45%;
+  top: 10%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(220, 204, 170, 0.08);
+
+  filter: blur(90px);
+
+  animation:
+    quickGlowMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes quickGlowMove {
+
+  from {
+    transform:
+      translate(0,0);
+  }
+
+  to {
+    transform:
+      translate(180px,80px);
+  }
+
+}
+
+.quick-content {
+  position: absolute;
+
+  left: 10%;
+
+  top: 18%;
+
+  z-index: 3;
+}
+
+.quick-label {
+  font-size: 0.7rem;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+
+  color: #d1c6b2;
+
+  margin-bottom: 22px;
+}
+
+.quick-title {
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:
+    clamp(4rem, 9vw, 8rem);
+
+  font-weight: 400;
+
+  line-height: 0.82;
+}
+
+.quick-subtitle {
+  margin-top: 30px;
+
+  max-width: 420px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.8;
+
+  color: #c3c2b9;
+
+  opacity: 0;
+
+  animation:
+    quickText 1.2s ease forwards;
+
+  animation-delay: 1.2s;
+}
+
+@keyframes quickText {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+.quick-list {
+  position: absolute;
+
+  right: 10%;
+
+  top: 25%;
+
+  text-align: right;
+
+  z-index: 3;
+}
+
+.quick-item {
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:
+    clamp(1.8rem, 3vw, 3rem);
+
+  color: #c9c6bc;
+
+  margin-bottom: 20px;
+
+  opacity: 0;
+
+  transform:
+    translateX(30px);
+
+  animation:
+    quickItemAppear 0.9s ease forwards;
+}
+
+.quick-item:nth-child(1) {
+  animation-delay: 1.5s;
+}
+
+.quick-item:nth-child(2) {
+  animation-delay: 1.8s;
+}
+
+.quick-item:nth-child(3) {
+  animation-delay: 2.1s;
+}
+
+.quick-item:nth-child(4) {
+  animation-delay: 2.4s;
+}
+
+@keyframes quickItemAppear {
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+
+}
+
+.quick-floor {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 0;
+
+  height: 20%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(65,57,48,0.1),
+      rgba(27,25,22,0.8)
+    );
+
+  border-top:
+    1px solid
+    rgba(255,255,255,0.05);
+}
+
+.quick-note {
+  position: absolute;
+
+  bottom: 30px;
+
+  right: 10%;
+
+  font-size: 0.6rem;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #777a76;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .food-list {
+    margin-top: 35px;
+  }
+
+  .food-item {
+    font-size: 1.6rem;
+  }
+
+  .rice-list,
+  .quick-list {
+    right: 7%;
+  }
+
+  .rice-dish {
+    font-size: 1.2rem;
+  }
+
+  .quick-item {
+    font-size: 1.6rem;
+  }
+
+}
 
 </style>
 
@@ -787,8 +1136,8 @@ h1 span {
 ========================= -->
 
 <section
-  class="opening"
-  id="opening">
+class="opening"
+id="opening">
 
   <div class="light"></div>
 
@@ -812,8 +1161,8 @@ h1 span {
     </div>
 
     <button
-      class="enter"
-      onclick="enterKitchen()">
+    class="enter"
+    onclick="enterKitchen()">
 
       Enter
 
@@ -834,8 +1183,8 @@ h1 span {
 ========================= -->
 
 <section
-  class="scene-two"
-  id="sceneTwo">
+class="scene-two"
+id="sceneTwo">
 
   <div class="sun"></div>
 
@@ -871,8 +1220,8 @@ h1 span {
 ========================= -->
 
 <section
-  class="food-scene"
-  id="foodScene">
+class="food-scene"
+id="foodScene">
 
   <div class="food-light"></div>
 
@@ -921,13 +1270,12 @@ h1 span {
 ========================= -->
 
 <section
-  class="rice-scene"
-  id="riceScene">
+class="rice-scene"
+id="riceScene">
 
   <div class="rice-glow"></div>
 
   <div class="rice-palm"></div>
-
 
   <div class="rice-content">
 
@@ -954,7 +1302,6 @@ h1 span {
 
   </div>
 
-
   <div class="rice-list">
 
     <div class="rice-dish">
@@ -975,9 +1322,71 @@ h1 span {
 
   </div>
 
-
   <div class="rice-footer">
     CHEF JEFF · KITCHEN ARCHIVE
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     QUICK KITCHEN
+========================= -->
+
+<section
+class="quick-scene"
+id="quickScene">
+
+  <div class="quick-glow"></div>
+
+  <div class="quick-content">
+
+    <div class="quick-label">
+      CHAPTER THREE
+    </div>
+
+    <div class="quick-title">
+      Quick Kitchen.
+    </div>
+
+    <div class="quick-subtitle">
+
+      Not every meal needs a plan.
+      Sometimes you just open the fridge,
+      look around, and make something.
+
+    </div>
+
+  </div>
+
+
+  <div class="quick-list">
+
+    <div class="quick-item">
+      Scrambled eggs
+    </div>
+
+    <div class="quick-item">
+      Sweet potato fries
+    </div>
+
+    <div class="quick-item">
+      Lazy dinners
+    </div>
+
+    <div class="quick-item">
+      Random experiments
+    </div>
+
+  </div>
+
+
+  <div class="quick-floor"></div>
+
+
+  <div class="quick-note">
+    SOMETIMES SIMPLE IS ENOUGH
   </div>
 
 </section>
@@ -989,21 +1398,20 @@ h1 span {
 
 function enterKitchen() {
 
-
   const opening =
     document.getElementById("opening");
-
 
   const sceneTwo =
     document.getElementById("sceneTwo");
 
-
   const foodScene =
     document.getElementById("foodScene");
 
-
   const riceScene =
     document.getElementById("riceScene");
+
+  const quickScene =
+    document.getElementById("quickScene");
 
 
   opening.classList.add("exit");
@@ -1032,6 +1440,15 @@ function enterKitchen() {
     riceScene.classList.add("active");
 
   }, 12500);
+
+
+  setTimeout(function() {
+
+    riceScene.classList.remove("active");
+
+    quickScene.classList.add("active");
+
+  }, 18000);
 
 
 }
