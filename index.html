@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <title>Chef Jeff's Swahili Kitchen</title>
 
   <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+    @import url(
+      'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap'
+    );
 
     * {
       margin: 0;
@@ -17,28 +24,40 @@
     }
 
     body {
+
       background: #202322;
+
       color: #eeeae1;
+
       font-family: 'DM Sans', sans-serif;
+
       overflow: hidden;
+
     }
+
 
     /* =========================
        OPENING
     ========================= */
 
     .opening {
+
       height: 100vh;
+
       width: 100%;
+
       position: relative;
 
       display: flex;
+
       justify-content: center;
+
       align-items: center;
 
       overflow: hidden;
 
       background:
+
         radial-gradient(
           circle at 50% 45%,
           #4c514e 0%,
@@ -47,103 +66,162 @@
         );
 
       transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
+        opacity 1.8s ease,
+        transform 1.8s ease;
+
     }
 
     .opening.exit {
+
       opacity: 0;
-      transform: scale(1.08);
+
+      transform: scale(1.05);
+
       pointer-events: none;
+
     }
 
+
     .light {
+
       position: absolute;
 
-      width: 600px;
-      height: 600px;
+      width: 650px;
 
-      background: rgba(210, 202, 179, 0.08);
+      height: 650px;
+
+      background:
+        rgba(220, 211, 187, 0.09);
 
       border-radius: 50%;
 
-      filter: blur(80px);
+      filter: blur(100px);
 
-      animation: lightMove 12s ease-in-out infinite alternate;
+      animation:
+        lightMove 14s ease-in-out infinite alternate;
+
     }
+
 
     @keyframes lightMove {
 
       from {
-        transform: translate(-120px, -40px);
+        transform:
+          translate(-180px, -60px);
       }
 
       to {
-        transform: translate(140px, 70px);
+        transform:
+          translate(180px, 80px);
       }
 
     }
 
-    /* PALMS */
 
-    .palm {
+    /* PALM SHADOWS */
+
+    .palm-shadow {
+
       position: absolute;
 
-      font-size: 13rem;
+      width: 500px;
 
-      opacity: 0.06;
+      height: 700px;
 
-      filter: grayscale(1);
+      opacity: 0.055;
 
-      animation: palmMove 8s ease-in-out infinite alternate;
+      filter: blur(3px);
+
+      background:
+
+        radial-gradient(
+          ellipse at center,
+          transparent 30%,
+          #111 31%,
+          transparent 32%
+        );
+
+      animation:
+        shadowMove 12s ease-in-out infinite alternate;
+
     }
 
-    .palm.left {
-      left: -70px;
-      bottom: -40px;
+
+    .palm-shadow.left {
+
+      left: -220px;
+
+      bottom: -200px;
+
+      transform: rotate(25deg);
+
     }
 
-    .palm.right {
-      right: -80px;
-      top: -30px;
-      animation-delay: 2s;
+
+    .palm-shadow.right {
+
+      right: -220px;
+
+      top: -200px;
+
+      transform: rotate(-25deg);
+
+      animation-delay: 3s;
+
     }
 
-    @keyframes palmMove {
+
+    @keyframes shadowMove {
 
       from {
-        transform: translateY(0) rotate(-5deg);
+        translate: -15px 0;
       }
 
       to {
-        transform: translateY(-18px) rotate(5deg);
+        translate: 25px -15px;
       }
 
     }
 
-    /* TITLE */
+
+    /* OPENING CONTENT */
 
     .content {
+
       position: relative;
+
       z-index: 5;
+
       text-align: center;
 
-      animation: appear 2.5s ease forwards;
+      animation:
+        appear 2.5s ease forwards;
+
     }
+
 
     @keyframes appear {
 
       from {
+
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+          translateY(25px);
+
       }
 
       to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
+
       }
 
     }
+
 
     .small-title {
 
@@ -159,11 +237,15 @@
 
     }
 
+
     h1 {
 
-      font-family: 'Cormorant Garamond', serif;
+      font-family:
+        'Cormorant Garamond',
+        serif;
 
-      font-size: clamp(4rem, 10vw, 8rem);
+      font-size:
+        clamp(4rem, 10vw, 8rem);
 
       font-weight: 400;
 
@@ -173,6 +255,7 @@
 
     }
 
+
     h1 span {
 
       display: block;
@@ -180,6 +263,7 @@
       color: #c5c0b4;
 
     }
+
 
     .subtitle {
 
@@ -193,7 +277,6 @@
 
     }
 
-    /* ENTER BUTTON */
 
     .enter {
 
@@ -201,15 +284,20 @@
 
       background: transparent;
 
-      border: 1px solid rgba(235, 231, 220, 0.45);
+      border:
+        1px solid
+        rgba(235, 231, 220, 0.45);
 
       color: #eeeae1;
 
-      padding: 14px 35px;
+      padding:
+        14px 35px;
 
       border-radius: 50px;
 
-      font-family: 'DM Sans', sans-serif;
+      font-family:
+        'DM Sans',
+        sans-serif;
 
       font-size: 0.75rem;
 
@@ -219,9 +307,11 @@
 
       cursor: pointer;
 
-      transition: all 0.4s ease;
+      transition:
+        all 0.4s ease;
 
     }
+
 
     .enter:hover {
 
@@ -229,11 +319,11 @@
 
       color: #242625;
 
-      transform: translateY(-3px);
-
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      transform:
+        translateY(-3px);
 
     }
+
 
     .bottom {
 
@@ -255,11 +345,227 @@
 
     }
 
+
     /* =========================
-       KITCHEN SCENE
+       SCENE TWO
     ========================= */
 
-    .kitchen {
+    .scene-two {
+
+      position: fixed;
+
+      inset: 0;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      overflow: hidden;
+
+      background:
+
+        linear-gradient(
+          120deg,
+          #696b66,
+          #444743,
+          #272927
+        );
+
+      transition:
+        opacity 2s ease;
+
+    }
+
+
+    .scene-two.active {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+
+    .sun {
+
+      position: absolute;
+
+      width: 600px;
+
+      height: 600px;
+
+      top: -250px;
+
+      left: 5%;
+
+      border-radius: 50%;
+
+      background:
+        rgba(235, 222, 190, 0.12);
+
+      filter: blur(100px);
+
+      animation:
+        sunMove 15s ease-in-out infinite alternate;
+
+    }
+
+
+    @keyframes sunMove {
+
+      from {
+        transform:
+          translateX(0);
+      }
+
+      to {
+        transform:
+          translateX(300px);
+      }
+
+    }
+
+
+    .scene-palm {
+
+      position: absolute;
+
+      width: 700px;
+
+      height: 900px;
+
+      right: -300px;
+
+      top: -250px;
+
+      opacity: 0.07;
+
+      background:
+
+        radial-gradient(
+          ellipse,
+          #111 0%,
+          transparent 60%
+        );
+
+      filter: blur(8px);
+
+      animation:
+        scenePalmMove 11s ease-in-out infinite alternate;
+
+    }
+
+
+    @keyframes scenePalmMove {
+
+      from {
+        transform:
+          translateX(0)
+          rotate(-20deg);
+      }
+
+      to {
+        transform:
+          translateX(-50px)
+          rotate(-15deg);
+      }
+
+    }
+
+
+    .surface {
+
+      position: absolute;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: 0;
+
+      height: 22%;
+
+      background:
+
+        linear-gradient(
+          to bottom,
+          rgba(80,69,58,0.2),
+          rgba(38,32,28,0.8)
+        );
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    }
+
+
+    .scene-content {
+
+      position: absolute;
+
+      left: 10%;
+
+      top: 25%;
+
+      max-width: 650px;
+
+    }
+
+
+    .chapter {
+
+      font-size: 0.7rem;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: #d0c7b5;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .scene-title {
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(4rem, 8vw, 7rem);
+
+      font-weight: 400;
+
+      line-height: 0.9;
+
+      color: #eeeae1;
+
+    }
+
+
+    .scene-description {
+
+      margin-top: 30px;
+
+      max-width: 420px;
+
+      font-size: 0.9rem;
+
+      line-height: 1.8;
+
+      color: #c8c6bd;
+
+    }
+
+
+    /* =========================
+       FOOD SCENE
+    ========================= */
+
+    .food-scene {
 
       position: fixed;
 
@@ -270,24 +576,23 @@
       pointer-events: none;
 
       background:
-        linear-gradient(
-          rgba(35,35,32,0.25),
-          rgba(25,25,23,0.75)
-        ),
 
         linear-gradient(
           120deg,
-          #85837a,
-          #555852 45%,
-          #302f2b
+          #575954,
+          #373a36,
+          #202220
         );
 
-      transition: opacity 2s ease;
+      transition:
+        opacity 2s ease;
 
       overflow: hidden;
+
     }
 
-    .kitchen.active {
+
+    .food-scene.active {
 
       opacity: 1;
 
@@ -295,252 +600,61 @@
 
     }
 
-    /* SUNLIGHT */
 
-    .sunlight {
+    .food-light {
 
       position: absolute;
 
-      width: 500px;
-      height: 500px;
+      width: 700px;
 
-      top: -180px;
-      left: 10%;
+      height: 700px;
 
-      background: rgba(239,225,186,0.18);
+      right: -200px;
 
-      filter: blur(80px);
+      top: -250px;
 
       border-radius: 50%;
 
-      animation: sunlightMove 10s ease-in-out infinite alternate;
+      background:
+        rgba(224, 210, 176, 0.10);
+
+      filter: blur(110px);
+
+      animation:
+        foodLightMove 12s ease-in-out infinite alternate;
 
     }
 
-    @keyframes sunlightMove {
+
+    @keyframes foodLightMove {
 
       from {
-        transform: translateX(0);
+        transform:
+          translateX(0);
       }
 
       to {
-        transform: translateX(250px);
-      }
-
-    }
-
-    /* BACK WALL */
-
-    .wall {
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-
-      bottom: 25%;
-
-      height: 45%;
-
-      background:
-        linear-gradient(
-          rgba(255,255,255,0.05),
-          rgba(0,0,0,0.15)
-        );
-
-      border-top:
-        1px solid rgba(255,255,255,0.08);
-
-    }
-
-    /* COUNTER */
-
-    .counter {
-
-      position: absolute;
-
-      left: 5%;
-      right: 5%;
-
-      bottom: 13%;
-
-      height: 12%;
-
-      background:
-        linear-gradient(
-          #54483e,
-          #302b27
-        );
-
-      border-radius: 5px;
-
-      box-shadow:
-        0 25px 50px rgba(0,0,0,0.45);
-
-    }
-
-    /* POT */
-
-    .pot {
-
-      position: absolute;
-
-      bottom: 23%;
-
-      left: 23%;
-
-      width: 150px;
-
-      height: 90px;
-
-      background:
-        linear-gradient(
-          #4c4d48,
-          #222320
-        );
-
-      border-radius:
-        10px 10px 35px 35px;
-
-      box-shadow:
-        0 20px 35px rgba(0,0,0,0.45);
-
-    }
-
-    .pot::before {
-
-      content: "";
-
-      position: absolute;
-
-      width: 170px;
-
-      height: 18px;
-
-      left: -10px;
-
-      top: -7px;
-
-      border-radius: 50%;
-
-      background: #252623;
-
-    }
-
-    /* PAN */
-
-    .pan {
-
-      position: absolute;
-
-      bottom: 23%;
-
-      right: 22%;
-
-      width: 150px;
-
-      height: 35px;
-
-      border-radius: 50%;
-
-      background: #1d1e1c;
-
-      box-shadow:
-        0 20px 35px rgba(0,0,0,0.4);
-
-    }
-
-    .pan::after {
-
-      content: "";
-
-      position: absolute;
-
-      right: -100px;
-
-      top: 5px;
-
-      width: 110px;
-
-      height: 12px;
-
-      background: #272722;
-
-      border-radius: 10px;
-
-      transform: rotate(-8deg);
-
-    }
-
-    /* STEAM */
-
-    .steam {
-
-      position: absolute;
-
-      bottom: 34%;
-
-      left: 28%;
-
-      width: 8px;
-
-      height: 100px;
-
-      border-radius: 50%;
-
-      background: rgba(240,238,224,0.15);
-
-      filter: blur(8px);
-
-      animation: steamRise 3s ease-in-out infinite;
-
-    }
-
-    @keyframes steamRise {
-
-      0% {
-        opacity: 0;
         transform:
-          translateY(20px)
-          scale(0.8);
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-        transform:
-          translateY(-70px)
-          scale(1.5);
+          translateX(-250px);
       }
 
     }
 
-    .steam.two {
 
-      left: 32%;
-
-      animation-delay: 1s;
-
-    }
-
-    /* KITCHEN TEXT */
-
-    .kitchen-content {
+    .food-content {
 
       position: absolute;
 
-      top: 18%;
+      top: 20%;
 
-      left: 9%;
+      left: 10%;
 
-      max-width: 600px;
+      right: 10%;
 
     }
 
-    .chapter {
+
+    .food-label {
 
       font-size: 0.7rem;
 
@@ -554,50 +668,127 @@
 
     }
 
-    .kitchen h2 {
+
+    .food-title {
 
       font-family:
         'Cormorant Garamond',
         serif;
 
       font-size:
-        clamp(3rem, 7vw, 6rem);
+        clamp(4rem, 9vw, 8rem);
 
       font-weight: 400;
 
-      line-height: 0.9;
+      line-height: 0.85;
 
     }
 
-    .kitchen-text {
 
-      margin-top: 25px;
+    .food-list {
 
-      max-width: 430px;
+      margin-top: 55px;
 
-      color: #d0cec6;
+      display: flex;
 
-      line-height: 1.7;
+      flex-direction: column;
 
-      font-size: 0.95rem;
+      gap: 12px;
 
     }
+
+
+    .food-item {
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 2rem;
+
+      color: #c9c6bc;
+
+      opacity: 0;
+
+      transform:
+        translateX(-25px);
+
+      animation:
+        foodAppear 1s ease forwards;
+
+    }
+
+
+    .food-item:nth-child(1) {
+      animation-delay: 0.8s;
+    }
+
+    .food-item:nth-child(2) {
+      animation-delay: 1.1s;
+    }
+
+    .food-item:nth-child(3) {
+      animation-delay: 1.4s;
+    }
+
+    .food-item:nth-child(4) {
+      animation-delay: 1.7s;
+    }
+
+
+    @keyframes foodAppear {
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateX(0);
+
+      }
+
+    }
+
+
+    .food-note {
+
+      position: absolute;
+
+      right: 10%;
+
+      bottom: 13%;
+
+      font-size: 0.65rem;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      color: #858780;
+
+    }
+
 
   </style>
 
 </head>
 
+
 <body>
+
 
   <!-- OPENING -->
 
-  <section class="opening" id="opening">
+  <section
+    class="opening"
+    id="opening">
 
     <div class="light"></div>
 
-    <div class="palm left">🌴</div>
+    <div class="palm-shadow left"></div>
 
-    <div class="palm right">🌴</div>
+    <div class="palm-shadow right"></div>
+
 
     <div class="content">
 
@@ -605,14 +796,22 @@
         A little place of my own
       </div>
 
+
       <h1>
+
         The Jeff
+
         <span>Kitchen</span>
+
       </h1>
 
+
       <div class="subtitle">
+
         FOOD · STORIES · LITTLE MOMENTS
+
       </div>
+
 
       <button
         class="enter"
@@ -624,82 +823,172 @@
 
     </div>
 
+
     <div class="bottom">
+
       CHEF JEFF · 2026
+
     </div>
 
   </section>
 
 
-  <!-- KITCHEN -->
+
+  <!-- SCENE TWO -->
 
   <section
-    class="kitchen"
-    id="kitchen">
+    class="scene-two"
+    id="sceneTwo">
 
-    <div class="sunlight"></div>
 
-    <div class="wall"></div>
+    <div class="sun"></div>
 
-    <div class="kitchen-content">
+    <div class="scene-palm"></div>
+
+
+    <div class="scene-content">
 
       <div class="chapter">
         CHAPTER ONE
       </div>
 
-      <h2>
-        Come into<br>
-        the kitchen.
-      </h2>
 
-      <p class="kitchen-text">
+      <div class="scene-title">
+        Where I cook.
+      </div>
 
-        This isn't a restaurant.
-        It's just my little corner of the world —
-        where rice gets experimented on,
-        eggs get thrown into pans,
-        and somehow dinner always happens.
 
-      </p>
+      <div class="scene-description">
+
+        Rice.
+        Eggs.
+        Experiments.
+        Whatever I'm craving.
+
+      </div>
 
     </div>
 
-    <div class="counter"></div>
 
-    <div class="pot"></div>
+    <div class="surface"></div>
 
-    <div class="pan"></div>
-
-    <div class="steam"></div>
-
-    <div class="steam two"></div>
 
   </section>
+
+
+
+  <!-- FOOD SCENE -->
+
+  <section
+    class="food-scene"
+    id="foodScene">
+
+
+    <div class="food-light"></div>
+
+
+    <div class="food-content">
+
+
+      <div class="food-label">
+
+        CHAPTER TWO
+
+      </div>
+
+
+      <div class="food-title">
+
+        The Food.
+
+      </div>
+
+
+      <div class="food-list">
+
+
+        <div class="food-item">
+          Rice
+        </div>
+
+
+        <div class="food-item">
+          Eggs
+        </div>
+
+
+        <div class="food-item">
+          Biryani
+        </div>
+
+
+        <div class="food-item">
+          Experiments
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="food-note">
+
+      Made slowly · eaten happily
+
+    </div>
+
+
+  </section>
+
 
 
   <!-- JAVASCRIPT -->
 
   <script>
 
+
     function enterKitchen() {
+
 
       const opening =
         document.getElementById("opening");
 
-      const kitchen =
-        document.getElementById("kitchen");
+
+      const sceneTwo =
+        document.getElementById("sceneTwo");
+
+
+      const foodScene =
+        document.getElementById("foodScene");
+
 
       opening.classList.add("exit");
 
+
       setTimeout(function() {
 
-        kitchen.classList.add("active");
+        sceneTwo.classList.add("active");
 
       }, 900);
 
+
+      setTimeout(function() {
+
+        sceneTwo.classList.remove("active");
+
+        foodScene.classList.add("active");
+
+      }, 6500);
+
+
     }
+
 
   </script>
 
+
 </body>
+
 </html>
