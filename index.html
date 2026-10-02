@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Jeff Kitchen</title>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #202322;
+      color: #eeeae1;
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    /* MAIN OPENING */
+
+    .opening {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          #4c514e 0%,
+          #303431 40%,
+          #202322 80%
+        );
+    }
+
+    /* SOFT MOVING LIGHT */
+
+    .light {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+
+      background: rgba(210, 202, 179, 0.08);
+
+      border-radius: 50%;
+
+      filter: blur(80px);
+
+      animation: lightMove 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes lightMove {
+
+      from {
+        transform: translate(-120px, -40px);
+      }
+
+      to {
+        transform: translate(140px, 70px);
+      }
+
+    }
+
+    /* PALM SHADOWS */
+
+    .palm {
+      position: absolute;
+      font-size: 13rem;
+
+      opacity: 0.06;
+
+      filter: grayscale(1);
+
+      animation: palmMove 9s ease-in-out infinite alternate;
+    }
+
+    .palm.left {
+      left: -70px;
+      bottom: -40px;
+      transform: rotate(-15deg);
+    }
+
+    .palm.right {
+      right: -80px;
+      top: -30px;
+      transform: rotate(25deg);
+      animation-delay: 2s;
+    }
+
+    @keyframes palmMove {
+
+      from {
+        transform: translateY(0) rotate(-15deg);
+      }
+
+      to {
+        transform: translateY(-18px) rotate(-10deg);
+      }
+
+    }
+
+    /* CONTENT */
+
+    .content {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+
+      animation: appear 2.5s ease forwards;
+    }
+
+    @keyframes appear {
+
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    .small-title {
+
+      font-size: 0.7rem;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: #bcb8ae;
+
+      margin-bottom: 25px;
+
+      font-weight: 400;
+
+    }
+
+    h1 {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(4rem, 10vw, 8rem);
+
+      font-weight: 400;
+
+      line-height: 0.85;
+
+      letter-spacing: -3px;
+
+    }
+
+    h1 span {
+
+      display: block;
+
+      color: #c5c0b4;
+
+    }
+
+    .subtitle {
+
+      margin-top: 30px;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 2px;
+
+      color: #aaa9a1;
+
+    }
+
+    /* ENTER BUTTON */
+
+    .enter {
+
+      margin-top: 55px;
+
+      background: transparent;
+
+      border: 1px solid rgba(235, 231, 220, 0.45);
+
+      color: #eeeae1;
+
+      padding: 14px 35px;
+
+      border-radius: 50px;
+
+      font-family: 'DM Sans', sans-serif;
+
+      font-size: 0.75rem;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: all 0.4s ease;
+
+    }
+
+    .enter:hover {
+
+      background: #eeeae1;
+
+      color: #242625;
+
+      transform: translateY(-3px);
+
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    }
+
+    /* BOTTOM TEXT */
+
+    .bottom {
+
+      position: absolute;
+
+      bottom: 30px;
+
+      left: 0;
+
+      width: 100%;
+
+      text-align: center;
+
+      font-size: 0.65rem;
+
+      letter-spacing: 2px;
+
+      color: #777a76;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <main class="opening">
+
+    <div class="light"></div>
+
+    <div class="palm left">🌴</div>
+
+    <div class="palm right">🌴</div>
+
+
+    <div class="content">
+
+      <div class="small-title">
+        A little place of my own
+      </div>
+
+      <h1>
+        The Jeff
+        <span>Kitchen</span>
+      </h1>
+
+      <div class="subtitle">
+        FOOD · STORIES · LITTLE MOMENTS
+      </div>
+
+      <button class="enter">
+        Enter
+      </button>
+
+    </div>
+
+
+    <div class="bottom">
+      CHEF JEFF · 2026
+    </div>
+
+  </main>
+
+</body>
+</html>
