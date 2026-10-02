@@ -139,9 +139,7 @@ body {
 
 .content {
   position: relative;
-
   z-index: 5;
-
   text-align: center;
 
   animation:
@@ -164,13 +162,9 @@ body {
 
 .small-title {
   font-size: 0.7rem;
-
   letter-spacing: 5px;
-
   text-transform: uppercase;
-
   color: #bcb8ae;
-
   margin-bottom: 25px;
 }
 
@@ -265,12 +259,11 @@ h1 span {
 
 
 /* =========================
-   WHERE I COOK
+   SCENE TWO
 ========================= */
 
 .scene-two {
   position: fixed;
-
   inset: 0;
 
   opacity: 0;
@@ -293,7 +286,6 @@ h1 span {
 
 .scene-two.active {
   opacity: 1;
-
   pointer-events: auto;
 }
 
@@ -446,7 +438,6 @@ h1 span {
 
 .food-scene {
   position: fixed;
-
   inset: 0;
 
   opacity: 0;
@@ -469,7 +460,6 @@ h1 span {
 
 .food-scene.active {
   opacity: 1;
-
   pointer-events: auto;
 }
 
@@ -509,9 +499,7 @@ h1 span {
   position: absolute;
 
   top: 20%;
-
   left: 10%;
-
   right: 10%;
 }
 
@@ -599,7 +587,6 @@ h1 span {
   position: absolute;
 
   right: 10%;
-
   bottom: 13%;
 
   font-size: 0.65rem;
@@ -618,7 +605,6 @@ h1 span {
 
 .rice-scene {
   position: fixed;
-
   inset: 0;
 
   opacity: 0;
@@ -641,7 +627,6 @@ h1 span {
 
 .rice-scene.active {
   opacity: 1;
-
   pointer-events: auto;
 }
 
@@ -704,7 +689,6 @@ h1 span {
   position: absolute;
 
   left: 10%;
-
   top: 18%;
 
   max-width: 700px;
@@ -739,7 +723,6 @@ h1 span {
 
 .rice-line {
   width: 70px;
-
   height: 1px;
 
   background:
@@ -771,16 +754,12 @@ h1 span {
 
   from {
     opacity: 0;
-
-    transform:
-      translateY(15px);
+    transform: translateY(15px);
   }
 
   to {
     opacity: 1;
-
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 
 }
@@ -832,9 +811,7 @@ h1 span {
 
   to {
     opacity: 1;
-
-    transform:
-      translateX(0);
+    transform: translateX(0);
   }
 
 }
@@ -843,7 +820,6 @@ h1 span {
   position: absolute;
 
   bottom: 30px;
-
   left: 10%;
 
   font-size: 0.6rem;
@@ -885,7 +861,6 @@ h1 span {
 
 .quick-scene.active {
   opacity: 1;
-
   pointer-events: auto;
 }
 
@@ -912,13 +887,11 @@ h1 span {
 @keyframes quickGlowMove {
 
   from {
-    transform:
-      translate(0,0);
+    transform: translate(0,0);
   }
 
   to {
-    transform:
-      translate(180px,80px);
+    transform: translate(180px,80px);
   }
 
 }
@@ -927,7 +900,6 @@ h1 span {
   position: absolute;
 
   left: 10%;
-
   top: 18%;
 
   z-index: 3;
@@ -981,16 +953,12 @@ h1 span {
 
   from {
     opacity: 0;
-
-    transform:
-      translateY(15px);
+    transform: translateY(15px);
   }
 
   to {
     opacity: 1;
-
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 
 }
@@ -999,7 +967,6 @@ h1 span {
   position: absolute;
 
   right: 10%;
-
   top: 25%;
 
   text-align: right;
@@ -1048,9 +1015,7 @@ h1 span {
 
   to {
     opacity: 1;
-
-    transform:
-      translateX(0);
+    transform: translateX(0);
   }
 
 }
@@ -1081,7 +1046,6 @@ h1 span {
   position: absolute;
 
   bottom: 30px;
-
   right: 10%;
 
   font-size: 0.6rem;
@@ -1095,30 +1059,259 @@ h1 span {
 
 
 /* =========================
+   THE CUP
+========================= */
+
+.cup-scene {
+  position: fixed;
+
+  inset: 0;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #555750 0%,
+      #343733 45%,
+      #202220 90%
+    );
+
+  transition:
+    opacity 2.5s ease;
+}
+
+.cup-scene.active {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+.cup-light {
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  left: 50%;
+  top: 45%;
+
+  transform:
+    translate(-50%,-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(224, 205, 166, 0.09);
+
+  filter: blur(100px);
+
+  animation:
+    cupLight 9s ease-in-out infinite alternate;
+}
+
+@keyframes cupLight {
+
+  from {
+    transform:
+      translate(-50%,-50%)
+      scale(0.9);
+  }
+
+  to {
+    transform:
+      translate(-50%,-50%)
+      scale(1.15);
+  }
+
+}
+
+.cup-palm {
+  position: absolute;
+
+  width: 600px;
+  height: 800px;
+
+  left: -250px;
+  top: -200px;
+
+  opacity: 0.05;
+
+  background:
+    radial-gradient(
+      ellipse,
+      #111 0%,
+      transparent 65%
+    );
+
+  filter: blur(7px);
+}
+
+.cup-content {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  z-index: 3;
+}
+
+.cup-label {
+  font-size: 0.7rem;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+
+  color: #d0c5b2;
+
+  margin-bottom: 22px;
+}
+
+.cup-title {
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:
+    clamp(4.5rem, 10vw, 9rem);
+
+  font-weight: 400;
+
+  line-height: 0.8;
+
+  opacity: 0;
+
+  animation:
+    cupTitleAppear 1.5s ease forwards;
+
+  animation-delay: 0.7s;
+}
+
+@keyframes cupTitleAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+.cup-subtitle {
+  margin-top: 35px;
+
+  max-width: 430px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.9;
+
+  color: #c4c2b8;
+
+  opacity: 0;
+
+  animation:
+    cupSubtitleAppear 1.5s ease forwards;
+
+  animation-delay: 1.4s;
+}
+
+@keyframes cupSubtitleAppear {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+.cup-name {
+  margin-top: 35px;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 1.8rem;
+
+  color: #aaa79d;
+
+  opacity: 0;
+
+  animation:
+    cupNameAppear 1.5s ease forwards;
+
+  animation-delay: 2s;
+}
+
+@keyframes cupNameAppear {
+
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+.cup-footer {
+  position: absolute;
+
+  bottom: 30px;
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 0.6rem;
+
+  letter-spacing: 3px;
+
+  color: #777a76;
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 700px) {
 
-  .food-list {
-    margin-top: 35px;
-  }
-
-  .food-item {
-    font-size: 1.6rem;
-  }
-
-  .rice-list,
   .quick-list {
     right: 7%;
   }
 
-  .rice-dish {
-    font-size: 1.2rem;
-  }
-
   .quick-item {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
 }
@@ -1131,9 +1324,7 @@ h1 span {
 <body>
 
 
-<!-- =========================
-     OPENING
-========================= -->
+<!-- OPENING -->
 
 <section
 class="opening"
@@ -1178,9 +1369,7 @@ id="opening">
 
 
 
-<!-- =========================
-     WHERE I COOK
-========================= -->
+<!-- WHERE I COOK -->
 
 <section
 class="scene-two"
@@ -1215,9 +1404,7 @@ id="sceneTwo">
 
 
 
-<!-- =========================
-     THE FOOD
-========================= -->
+<!-- THE FOOD -->
 
 <section
 class="food-scene"
@@ -1265,9 +1452,7 @@ id="foodScene">
 
 
 
-<!-- =========================
-     RICE
-========================= -->
+<!-- RICE -->
 
 <section
 class="rice-scene"
@@ -1330,9 +1515,7 @@ id="riceScene">
 
 
 
-<!-- =========================
-     QUICK KITCHEN
-========================= -->
+<!-- QUICK KITCHEN -->
 
 <section
 class="quick-scene"
@@ -1360,7 +1543,6 @@ id="quickScene">
 
   </div>
 
-
   <div class="quick-list">
 
     <div class="quick-item">
@@ -1381,12 +1563,54 @@ id="quickScene">
 
   </div>
 
-
   <div class="quick-floor"></div>
-
 
   <div class="quick-note">
     SOMETIMES SIMPLE IS ENOUGH
+  </div>
+
+</section>
+
+
+
+<!-- THE CUP -->
+
+<section
+class="cup-scene"
+id="cupScene">
+
+  <div class="cup-light"></div>
+
+  <div class="cup-palm"></div>
+
+  <div class="cup-content">
+
+    <div class="cup-label">
+      A LITTLE SWEETNESS
+    </div>
+
+    <div class="cup-title">
+      The Cup.
+    </div>
+
+    <div class="cup-subtitle">
+
+      Sometimes the kitchen isn't about
+      a full meal.
+
+      Sometimes it's just about making
+      something you enjoy.
+
+    </div>
+
+    <div class="cup-name">
+      Oreo · Cerelac · Milk
+    </div>
+
+  </div>
+
+  <div class="cup-footer">
+    CHEF JEFF · LITTLE MOMENTS
   </div>
 
 </section>
@@ -1397,6 +1621,7 @@ id="quickScene">
 
 
 function enterKitchen() {
+
 
   const opening =
     document.getElementById("opening");
@@ -1412,6 +1637,9 @@ function enterKitchen() {
 
   const quickScene =
     document.getElementById("quickScene");
+
+  const cupScene =
+    document.getElementById("cupScene");
 
 
   opening.classList.add("exit");
@@ -1449,6 +1677,15 @@ function enterKitchen() {
     quickScene.classList.add("active");
 
   }, 18000);
+
+
+  setTimeout(function() {
+
+    quickScene.classList.remove("active");
+
+    cupScene.classList.add("active");
+
+  }, 23500);
 
 
 }
