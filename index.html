@@ -3,773 +3,778 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Chef Jeff's Swahili Kitchen</title>
+<title>Chef Jeff's Swahili Kitchen</title>
 
-  <style>
+<style>
 
-    @import url(
-      'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap'
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #202322;
+  color: #eeeae1;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+}
+
+
+/* =========================
+   OPENING
+========================= */
+
+.opening {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #4c514e 0%,
+      #303431 40%,
+      #202322 80%
     );
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  transition:
+    opacity 1.8s ease,
+    transform 1.8s ease;
+}
+
+.opening.exit {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.light {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  background: rgba(220, 211, 187, 0.09);
+  border-radius: 50%;
+  filter: blur(100px);
+
+  animation:
+    lightMove 14s ease-in-out infinite alternate;
+}
+
+@keyframes lightMove {
+
+  from {
+    transform: translate(-180px, -60px);
+  }
+
+  to {
+    transform: translate(180px, 80px);
+  }
+
+}
+
+.palm-shadow {
+  position: absolute;
+  width: 500px;
+  height: 700px;
+  opacity: 0.055;
+  filter: blur(3px);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      #111 31%,
+      transparent 32%
+    );
+
+  animation:
+    shadowMove 12s ease-in-out infinite alternate;
+}
+
+.palm-shadow.left {
+  left: -220px;
+  bottom: -200px;
+  transform: rotate(25deg);
+}
+
+.palm-shadow.right {
+  right: -220px;
+  top: -200px;
+  transform: rotate(-25deg);
+  animation-delay: 3s;
+}
+
+@keyframes shadowMove {
+
+  from {
+    translate: -15px 0;
+  }
+
+  to {
+    translate: 25px -15px;
+  }
+
+}
+
+.content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+
+  animation:
+    appear 2.5s ease forwards;
+}
+
+@keyframes appear {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.small-title {
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #bcb8ae;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -3px;
+}
+
+h1 span {
+  display: block;
+  color: #c5c0b4;
+}
+
+.subtitle {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: #aaa9a1;
+}
+
+.enter {
+  margin-top: 55px;
+  background: transparent;
+  border: 1px solid rgba(235, 231, 220, 0.45);
+  color: #eeeae1;
+  padding: 14px 35px;
+  border-radius: 50px;
+
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.enter:hover {
+  background: #eeeae1;
+  color: #242625;
+  transform: translateY(-3px);
+}
+
+.bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: #777a76;
+}
+
+
+/* =========================
+   SCENE TWO
+========================= */
+
+.scene-two {
+  position: fixed;
+  inset: 0;
+
+  opacity: 0;
+  pointer-events: none;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      120deg,
+      #696b66,
+      #444743,
+      #272927
+    );
+
+  transition:
+    opacity 2s ease;
+}
+
+.scene-two.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sun {
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  top: -250px;
+  left: 5%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(235, 222, 190, 0.12);
+
+  filter: blur(100px);
+
+  animation:
+    sunMove 15s ease-in-out infinite alternate;
+}
+
+@keyframes sunMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(300px);
+  }
 
-    body {
+}
 
-      background: #202322;
+.scene-palm {
+  position: absolute;
 
-      color: #eeeae1;
+  width: 700px;
+  height: 900px;
 
-      font-family: 'DM Sans', sans-serif;
+  right: -300px;
+  top: -250px;
 
-      overflow: hidden;
+  opacity: 0.07;
 
-    }
+  background:
+    radial-gradient(
+      ellipse,
+      #111 0%,
+      transparent 60%
+    );
 
+  filter: blur(8px);
 
-    /* =========================
-       OPENING
-    ========================= */
+  animation:
+    scenePalmMove 11s ease-in-out infinite alternate;
+}
 
-    .opening {
+@keyframes scenePalmMove {
 
-      height: 100vh;
+  from {
+    transform:
+      translateX(0)
+      rotate(-20deg);
+  }
 
-      width: 100%;
+  to {
+    transform:
+      translateX(-50px)
+      rotate(-15deg);
+  }
 
-      position: relative;
+}
 
-      display: flex;
+.surface {
+  position: absolute;
 
-      justify-content: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-      align-items: center;
+  height: 22%;
 
-      overflow: hidden;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(80,69,58,0.2),
+      rgba(38,32,28,0.8)
+    );
 
-      background:
+  border-top:
+    1px solid
+    rgba(255,255,255,0.06);
+}
 
-        radial-gradient(
-          circle at 50% 45%,
-          #4c514e 0%,
-          #303431 40%,
-          #202322 80%
-        );
+.scene-content {
+  position: absolute;
 
-      transition:
-        opacity 1.8s ease,
-        transform 1.8s ease;
+  left: 10%;
+  top: 25%;
 
-    }
+  max-width: 650px;
+}
 
-    .opening.exit {
+.chapter {
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 
-      opacity: 0;
+  color: #d0c7b5;
 
-      transform: scale(1.05);
+  margin-bottom: 25px;
+}
 
-      pointer-events: none;
+.scene-title {
+  font-family:
+    'Cormorant Garamond',
+    serif;
 
-    }
+  font-size:
+    clamp(4rem, 8vw, 7rem);
 
+  font-weight: 400;
+  line-height: 0.9;
 
-    .light {
+  color: #eeeae1;
+}
 
-      position: absolute;
+.scene-description {
+  margin-top: 30px;
 
-      width: 650px;
+  max-width: 420px;
 
-      height: 650px;
+  font-size: 0.9rem;
+  line-height: 1.8;
 
-      background:
-        rgba(220, 211, 187, 0.09);
+  color: #c8c6bd;
+}
 
-      border-radius: 50%;
 
-      filter: blur(100px);
+/* =========================
+   FOOD SCENE
+========================= */
 
-      animation:
-        lightMove 14s ease-in-out infinite alternate;
+.food-scene {
+  position: fixed;
+  inset: 0;
 
-    }
+  opacity: 0;
+  pointer-events: none;
 
+  background:
+    linear-gradient(
+      120deg,
+      #575954,
+      #373a36,
+      #202220
+    );
 
-    @keyframes lightMove {
+  transition:
+    opacity 2s ease;
 
-      from {
-        transform:
-          translate(-180px, -60px);
-      }
+  overflow: hidden;
+}
 
-      to {
-        transform:
-          translate(180px, 80px);
-      }
+.food-scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    }
+.food-light {
+  position: absolute;
 
+  width: 700px;
+  height: 700px;
 
-    /* PALM SHADOWS */
+  right: -200px;
+  top: -250px;
 
-    .palm-shadow {
+  border-radius: 50%;
 
-      position: absolute;
+  background:
+    rgba(224, 210, 176, 0.10);
 
-      width: 500px;
+  filter: blur(110px);
 
-      height: 700px;
+  animation:
+    foodLightMove 12s ease-in-out infinite alternate;
+}
 
-      opacity: 0.055;
+@keyframes foodLightMove {
 
-      filter: blur(3px);
+  from {
+    transform: translateX(0);
+  }
 
-      background:
+  to {
+    transform: translateX(-250px);
+  }
 
-        radial-gradient(
-          ellipse at center,
-          transparent 30%,
-          #111 31%,
-          transparent 32%
-        );
+}
 
-      animation:
-        shadowMove 12s ease-in-out infinite alternate;
+.food-content {
+  position: absolute;
 
-    }
+  top: 20%;
+  left: 10%;
+  right: 10%;
+}
 
+.food-label {
+  font-size: 0.7rem;
 
-    .palm-shadow.left {
+  letter-spacing: 5px;
 
-      left: -220px;
+  text-transform: uppercase;
 
-      bottom: -200px;
+  color: #d0c7b5;
 
-      transform: rotate(25deg);
+  margin-bottom: 20px;
+}
 
-    }
+.food-title {
+  font-family:
+    'Cormorant Garamond',
+    serif;
 
+  font-size:
+    clamp(4rem, 9vw, 8rem);
 
-    .palm-shadow.right {
+  font-weight: 400;
 
-      right: -220px;
+  line-height: 0.85;
+}
 
-      top: -200px;
+.food-list {
+  margin-top: 55px;
 
-      transform: rotate(-25deg);
+  display: flex;
+  flex-direction: column;
 
-      animation-delay: 3s;
+  gap: 12px;
+}
 
-    }
+.food-item {
+  font-family:
+    'Cormorant Garamond',
+    serif;
 
+  font-size: 2rem;
 
-    @keyframes shadowMove {
+  color: #c9c6bc;
 
-      from {
-        translate: -15px 0;
-      }
+  opacity: 0;
 
-      to {
-        translate: 25px -15px;
-      }
+  transform:
+    translateX(-25px);
 
-    }
+  animation:
+    foodAppear 1s ease forwards;
+}
 
+.food-item:nth-child(1) {
+  animation-delay: 0.8s;
+}
 
-    /* OPENING CONTENT */
+.food-item:nth-child(2) {
+  animation-delay: 1.1s;
+}
 
-    .content {
+.food-item:nth-child(3) {
+  animation-delay: 1.4s;
+}
 
-      position: relative;
+.food-item:nth-child(4) {
+  animation-delay: 1.7s;
+}
 
-      z-index: 5;
+@keyframes foodAppear {
 
-      text-align: center;
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
-      animation:
-        appear 2.5s ease forwards;
+}
 
-    }
+.food-note {
+  position: absolute;
 
+  right: 10%;
+  bottom: 13%;
 
-    @keyframes appear {
+  font-size: 0.65rem;
 
-      from {
+  letter-spacing: 3px;
 
-        opacity: 0;
+  text-transform: uppercase;
 
-        transform:
-          translateY(25px);
+  color: #858780;
+}
 
-      }
 
-      to {
+/* =========================
+   RICE SCENE
+========================= */
 
-        opacity: 1;
+.rice-scene {
+  position: fixed;
+  inset: 0;
 
-        transform:
-          translateY(0);
+  opacity: 0;
+  pointer-events: none;
 
-      }
+  overflow: hidden;
 
-    }
+  background:
+    linear-gradient(
+      135deg,
+      #4f514c,
+      #30332f,
+      #1f211f
+    );
 
+  transition:
+    opacity 2s ease;
+}
 
-    .small-title {
+.rice-scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-      font-size: 0.7rem;
+.rice-glow {
+  position: absolute;
 
-      letter-spacing: 5px;
+  width: 600px;
+  height: 600px;
 
-      text-transform: uppercase;
+  left: -150px;
+  bottom: -250px;
 
-      color: #bcb8ae;
+  border-radius: 50%;
 
-      margin-bottom: 25px;
+  background:
+    rgba(210, 193, 160, 0.09);
 
-    }
+  filter: blur(100px);
 
+  animation:
+    riceGlow 12s ease-in-out infinite alternate;
+}
 
-    h1 {
+@keyframes riceGlow {
 
-      font-family:
-        'Cormorant Garamond',
-        serif;
+  from {
+    transform: translate(0,0);
+  }
 
-      font-size:
-        clamp(4rem, 10vw, 8rem);
+  to {
+    transform: translate(250px,-100px);
+  }
 
-      font-weight: 400;
+}
 
-      line-height: 0.85;
+.rice-palm {
+  position: absolute;
 
-      letter-spacing: -3px;
+  width: 600px;
+  height: 700px;
 
-    }
+  right: -250px;
+  top: -100px;
 
+  opacity: 0.06;
 
-    h1 span {
+  background:
+    radial-gradient(
+      ellipse,
+      #111 0%,
+      transparent 65%
+    );
 
-      display: block;
+  filter: blur(7px);
+}
 
-      color: #c5c0b4;
+.rice-content {
+  position: absolute;
 
-    }
+  left: 10%;
+  top: 18%;
 
+  max-width: 700px;
+}
 
-    .subtitle {
+.rice-label {
+  font-size: 0.7rem;
 
-      margin-top: 30px;
+  letter-spacing: 5px;
 
-      font-size: 0.9rem;
+  text-transform: uppercase;
 
-      letter-spacing: 2px;
+  color: #d1c6b2;
 
-      color: #aaa9a1;
+  margin-bottom: 25px;
+}
 
-    }
+.rice-title {
+  font-family:
+    'Cormorant Garamond',
+    serif;
 
+  font-size:
+    clamp(4.5rem, 10vw, 9rem);
 
-    .enter {
+  font-weight: 400;
 
-      margin-top: 55px;
+  line-height: 0.8;
 
-      background: transparent;
+  color: #eeeae1;
+}
 
-      border:
-        1px solid
-        rgba(235, 231, 220, 0.45);
+.rice-line {
+  width: 70px;
+  height: 1px;
 
-      color: #eeeae1;
+  background:
+    rgba(238,234,225,0.45);
 
-      padding:
-        14px 35px;
+  margin-top: 40px;
+}
 
-      border-radius: 50px;
+.rice-text {
+  margin-top: 25px;
 
-      font-family:
-        'DM Sans',
-        sans-serif;
+  max-width: 440px;
 
-      font-size: 0.75rem;
+  font-size: 0.95rem;
 
-      letter-spacing: 3px;
+  line-height: 1.9;
 
-      text-transform: uppercase;
+  color: #c4c3ba;
 
-      cursor: pointer;
+  opacity: 0;
 
-      transition:
-        all 0.4s ease;
+  animation:
+    riceTextAppear 1.5s ease forwards;
 
-    }
+  animation-delay: 1.5s;
+}
 
+@keyframes riceTextAppear {
 
-    .enter:hover {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
 
-      background: #eeeae1;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-      color: #242625;
+}
 
-      transform:
-        translateY(-3px);
+.rice-list {
+  position: absolute;
 
-    }
+  right: 10%;
+  bottom: 15%;
 
+  text-align: right;
+}
 
-    .bottom {
+.rice-dish {
+  font-family:
+    'Cormorant Garamond',
+    serif;
 
-      position: absolute;
+  font-size: 1.6rem;
 
-      bottom: 30px;
+  color: #aaa9a1;
 
-      left: 0;
+  margin-top: 9px;
 
-      width: 100%;
+  opacity: 0;
 
-      text-align: center;
+  animation:
+    dishAppear 1s ease forwards;
+}
 
-      font-size: 0.65rem;
+.rice-dish:nth-child(1) {
+  animation-delay: 2s;
+}
 
-      letter-spacing: 2px;
+.rice-dish:nth-child(2) {
+  animation-delay: 2.3s;
+}
 
-      color: #777a76;
+.rice-dish:nth-child(3) {
+  animation-delay: 2.6s;
+}
 
-    }
+.rice-dish:nth-child(4) {
+  animation-delay: 2.9s;
+}
 
+@keyframes dishAppear {
 
-    /* =========================
-       SCENE TWO
-    ========================= */
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
-    .scene-two {
+}
 
-      position: fixed;
+.rice-footer {
+  position: absolute;
 
-      inset: 0;
+  bottom: 30px;
+  left: 10%;
 
-      opacity: 0;
+  font-size: 0.6rem;
 
-      pointer-events: none;
+  letter-spacing: 3px;
 
-      overflow: hidden;
+  text-transform: uppercase;
 
-      background:
+  color: #777a76;
+}
 
-        linear-gradient(
-          120deg,
-          #696b66,
-          #444743,
-          #272927
-        );
 
-      transition:
-        opacity 2s ease;
-
-    }
-
-
-    .scene-two.active {
-
-      opacity: 1;
-
-      pointer-events: auto;
-
-    }
-
-
-    .sun {
-
-      position: absolute;
-
-      width: 600px;
-
-      height: 600px;
-
-      top: -250px;
-
-      left: 5%;
-
-      border-radius: 50%;
-
-      background:
-        rgba(235, 222, 190, 0.12);
-
-      filter: blur(100px);
-
-      animation:
-        sunMove 15s ease-in-out infinite alternate;
-
-    }
-
-
-    @keyframes sunMove {
-
-      from {
-        transform:
-          translateX(0);
-      }
-
-      to {
-        transform:
-          translateX(300px);
-      }
-
-    }
-
-
-    .scene-palm {
-
-      position: absolute;
-
-      width: 700px;
-
-      height: 900px;
-
-      right: -300px;
-
-      top: -250px;
-
-      opacity: 0.07;
-
-      background:
-
-        radial-gradient(
-          ellipse,
-          #111 0%,
-          transparent 60%
-        );
-
-      filter: blur(8px);
-
-      animation:
-        scenePalmMove 11s ease-in-out infinite alternate;
-
-    }
-
-
-    @keyframes scenePalmMove {
-
-      from {
-        transform:
-          translateX(0)
-          rotate(-20deg);
-      }
-
-      to {
-        transform:
-          translateX(-50px)
-          rotate(-15deg);
-      }
-
-    }
-
-
-    .surface {
-
-      position: absolute;
-
-      left: 0;
-
-      right: 0;
-
-      bottom: 0;
-
-      height: 22%;
-
-      background:
-
-        linear-gradient(
-          to bottom,
-          rgba(80,69,58,0.2),
-          rgba(38,32,28,0.8)
-        );
-
-      border-top:
-        1px solid
-        rgba(255,255,255,0.06);
-
-    }
-
-
-    .scene-content {
-
-      position: absolute;
-
-      left: 10%;
-
-      top: 25%;
-
-      max-width: 650px;
-
-    }
-
-
-    .chapter {
-
-      font-size: 0.7rem;
-
-      letter-spacing: 5px;
-
-      text-transform: uppercase;
-
-      color: #d0c7b5;
-
-      margin-bottom: 25px;
-
-    }
-
-
-    .scene-title {
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(4rem, 8vw, 7rem);
-
-      font-weight: 400;
-
-      line-height: 0.9;
-
-      color: #eeeae1;
-
-    }
-
-
-    .scene-description {
-
-      margin-top: 30px;
-
-      max-width: 420px;
-
-      font-size: 0.9rem;
-
-      line-height: 1.8;
-
-      color: #c8c6bd;
-
-    }
-
-
-    /* =========================
-       FOOD SCENE
-    ========================= */
-
-    .food-scene {
-
-      position: fixed;
-
-      inset: 0;
-
-      opacity: 0;
-
-      pointer-events: none;
-
-      background:
-
-        linear-gradient(
-          120deg,
-          #575954,
-          #373a36,
-          #202220
-        );
-
-      transition:
-        opacity 2s ease;
-
-      overflow: hidden;
-
-    }
-
-
-    .food-scene.active {
-
-      opacity: 1;
-
-      pointer-events: auto;
-
-    }
-
-
-    .food-light {
-
-      position: absolute;
-
-      width: 700px;
-
-      height: 700px;
-
-      right: -200px;
-
-      top: -250px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(224, 210, 176, 0.10);
-
-      filter: blur(110px);
-
-      animation:
-        foodLightMove 12s ease-in-out infinite alternate;
-
-    }
-
-
-    @keyframes foodLightMove {
-
-      from {
-        transform:
-          translateX(0);
-      }
-
-      to {
-        transform:
-          translateX(-250px);
-      }
-
-    }
-
-
-    .food-content {
-
-      position: absolute;
-
-      top: 20%;
-
-      left: 10%;
-
-      right: 10%;
-
-    }
-
-
-    .food-label {
-
-      font-size: 0.7rem;
-
-      letter-spacing: 5px;
-
-      text-transform: uppercase;
-
-      color: #d0c7b5;
-
-      margin-bottom: 20px;
-
-    }
-
-
-    .food-title {
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(4rem, 9vw, 8rem);
-
-      font-weight: 400;
-
-      line-height: 0.85;
-
-    }
-
-
-    .food-list {
-
-      margin-top: 55px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
-
-    }
-
-
-    .food-item {
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size: 2rem;
-
-      color: #c9c6bc;
-
-      opacity: 0;
-
-      transform:
-        translateX(-25px);
-
-      animation:
-        foodAppear 1s ease forwards;
-
-    }
-
-
-    .food-item:nth-child(1) {
-      animation-delay: 0.8s;
-    }
-
-    .food-item:nth-child(2) {
-      animation-delay: 1.1s;
-    }
-
-    .food-item:nth-child(3) {
-      animation-delay: 1.4s;
-    }
-
-    .food-item:nth-child(4) {
-      animation-delay: 1.7s;
-    }
-
-
-    @keyframes foodAppear {
-
-      to {
-
-        opacity: 1;
-
-        transform:
-          translateX(0);
-
-      }
-
-    }
-
-
-    .food-note {
-
-      position: absolute;
-
-      right: 10%;
-
-      bottom: 13%;
-
-      font-size: 0.65rem;
-
-      letter-spacing: 3px;
-
-      text-transform: uppercase;
-
-      color: #858780;
-
-    }
-
-
-  </style>
+</style>
 
 </head>
 
@@ -777,216 +782,262 @@
 <body>
 
 
-  <!-- OPENING -->
+<!-- =========================
+     OPENING
+========================= -->
 
-  <section
-    class="opening"
-    id="opening">
+<section
+  class="opening"
+  id="opening">
 
-    <div class="light"></div>
+  <div class="light"></div>
 
-    <div class="palm-shadow left"></div>
+  <div class="palm-shadow left"></div>
 
-    <div class="palm-shadow right"></div>
+  <div class="palm-shadow right"></div>
+
+  <div class="content">
+
+    <div class="small-title">
+      A little place of my own
+    </div>
+
+    <h1>
+      The Jeff
+      <span>Kitchen</span>
+    </h1>
+
+    <div class="subtitle">
+      FOOD · STORIES · LITTLE MOMENTS
+    </div>
+
+    <button
+      class="enter"
+      onclick="enterKitchen()">
+
+      Enter
+
+    </button>
+
+  </div>
+
+  <div class="bottom">
+    CHEF JEFF · 2026
+  </div>
+
+</section>
 
 
-    <div class="content">
 
-      <div class="small-title">
-        A little place of my own
+<!-- =========================
+     WHERE I COOK
+========================= -->
+
+<section
+  class="scene-two"
+  id="sceneTwo">
+
+  <div class="sun"></div>
+
+  <div class="scene-palm"></div>
+
+  <div class="scene-content">
+
+    <div class="chapter">
+      CHAPTER ONE
+    </div>
+
+    <div class="scene-title">
+      Where I cook.
+    </div>
+
+    <div class="scene-description">
+      Rice.
+      Eggs.
+      Experiments.
+      Whatever I'm craving.
+    </div>
+
+  </div>
+
+  <div class="surface"></div>
+
+</section>
+
+
+
+<!-- =========================
+     THE FOOD
+========================= -->
+
+<section
+  class="food-scene"
+  id="foodScene">
+
+  <div class="food-light"></div>
+
+  <div class="food-content">
+
+    <div class="food-label">
+      CHAPTER TWO
+    </div>
+
+    <div class="food-title">
+      The Food.
+    </div>
+
+    <div class="food-list">
+
+      <div class="food-item">
+        Rice
       </div>
 
-
-      <h1>
-
-        The Jeff
-
-        <span>Kitchen</span>
-
-      </h1>
-
-
-      <div class="subtitle">
-
-        FOOD · STORIES · LITTLE MOMENTS
-
+      <div class="food-item">
+        Eggs
       </div>
 
+      <div class="food-item">
+        Biryani
+      </div>
 
-      <button
-        class="enter"
-        onclick="enterKitchen()">
-
-        Enter
-
-      </button>
+      <div class="food-item">
+        Experiments
+      </div>
 
     </div>
 
+  </div>
 
-    <div class="bottom">
+  <div class="food-note">
+    Made slowly · eaten happily
+  </div>
 
-      CHEF JEFF · 2026
+</section>
+
+
+
+<!-- =========================
+     RICE
+========================= -->
+
+<section
+  class="rice-scene"
+  id="riceScene">
+
+  <div class="rice-glow"></div>
+
+  <div class="rice-palm"></div>
+
+
+  <div class="rice-content">
+
+    <div class="rice-label">
+      THE FIRST LOVE
+    </div>
+
+    <div class="rice-title">
+      Rice.
+    </div>
+
+    <div class="rice-line"></div>
+
+    <div class="rice-text">
+
+      The kind of food that somehow
+      always finds its way into the kitchen.
+
+      Simple meals.
+      Experiments.
+      Comfort.
 
     </div>
 
-  </section>
+  </div>
 
 
+  <div class="rice-list">
 
-  <!-- SCENE TWO -->
-
-  <section
-    class="scene-two"
-    id="sceneTwo">
-
-
-    <div class="sun"></div>
-
-    <div class="scene-palm"></div>
-
-
-    <div class="scene-content">
-
-      <div class="chapter">
-        CHAPTER ONE
-      </div>
-
-
-      <div class="scene-title">
-        Where I cook.
-      </div>
-
-
-      <div class="scene-description">
-
-        Rice.
-        Eggs.
-        Experiments.
-        Whatever I'm craving.
-
-      </div>
-
+    <div class="rice-dish">
+      Creamy mashed-potato rice
     </div>
 
-
-    <div class="surface"></div>
-
-
-  </section>
-
-
-
-  <!-- FOOD SCENE -->
-
-  <section
-    class="food-scene"
-    id="foodScene">
-
-
-    <div class="food-light"></div>
-
-
-    <div class="food-content">
-
-
-      <div class="food-label">
-
-        CHAPTER TWO
-
-      </div>
-
-
-      <div class="food-title">
-
-        The Food.
-
-      </div>
-
-
-      <div class="food-list">
-
-
-        <div class="food-item">
-          Rice
-        </div>
-
-
-        <div class="food-item">
-          Eggs
-        </div>
-
-
-        <div class="food-item">
-          Biryani
-        </div>
-
-
-        <div class="food-item">
-          Experiments
-        </div>
-
-
-      </div>
-
-
+    <div class="rice-dish">
+      Chef Jeff fried rice
     </div>
 
-
-    <div class="food-note">
-
-      Made slowly · eaten happily
-
+    <div class="rice-dish">
+      Biryani
     </div>
 
+    <div class="rice-dish">
+      Pilau
+    </div>
 
-  </section>
-
-
-
-  <!-- JAVASCRIPT -->
-
-  <script>
+  </div>
 
 
-    function enterKitchen() {
+  <div class="rice-footer">
+    CHEF JEFF · KITCHEN ARCHIVE
+  </div>
+
+</section>
 
 
-      const opening =
-        document.getElementById("opening");
+
+<script>
 
 
-      const sceneTwo =
-        document.getElementById("sceneTwo");
+function enterKitchen() {
 
 
-      const foodScene =
-        document.getElementById("foodScene");
+  const opening =
+    document.getElementById("opening");
 
 
-      opening.classList.add("exit");
+  const sceneTwo =
+    document.getElementById("sceneTwo");
 
 
-      setTimeout(function() {
-
-        sceneTwo.classList.add("active");
-
-      }, 900);
+  const foodScene =
+    document.getElementById("foodScene");
 
 
-      setTimeout(function() {
-
-        sceneTwo.classList.remove("active");
-
-        foodScene.classList.add("active");
-
-      }, 6500);
+  const riceScene =
+    document.getElementById("riceScene");
 
 
-    }
+  opening.classList.add("exit");
 
 
-  </script>
+  setTimeout(function() {
+
+    sceneTwo.classList.add("active");
+
+  }, 900);
+
+
+  setTimeout(function() {
+
+    sceneTwo.classList.remove("active");
+
+    foodScene.classList.add("active");
+
+  }, 6500);
+
+
+  setTimeout(function() {
+
+    foodScene.classList.remove("active");
+
+    riceScene.classList.add("active");
+
+  }, 12500);
+
+
+}
+
+
+</script>
 
 
 </body>
